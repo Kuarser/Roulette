@@ -1,0 +1,14 @@
+ManifestFileVersion: 0
+CRC: 805745994
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: io
+      Dependencies: {}
+    Info_1:
+      Name: game
+      Dependencies:
+        Dependency_0: io
+    Info_2:
+      Name: load
+      Dependencies: {}

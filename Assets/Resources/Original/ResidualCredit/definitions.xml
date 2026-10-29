@@ -1,0 +1,627 @@
+<FEATDEFS>
+
+  <!-- INFO Definition Structure -->
+  <INFO>
+      <prop name="File" value="featdefs.xml" type="string"></prop>
+      <prop name="GameType" value="RCGTOP0" type="string"></prop>
+      <prop name="NumberOfFiles" value="3" type="i32"></prop>
+      <prop name="File0" value="RCGTOP0.txt" type="string"></prop>
+      <prop name="File1" value="Featurescreen_rev01/GTW_Cinevision_Feature_EN_V32HD.psd" type="string"></prop>
+      <prop name="File2" value="/agp/games/Menu/assets/DefaultSkin/Common/Features_rev01/RCGTOP0/Assets_rev01/audio.xml" type="string"></prop>
+      <prop name="File3" value="/agp/games/Menu/assets/DefaultSkin/Common/Features_rev01/RCGTOP0/Assets_rev01/font.xml" type="string"></prop>
+  </INFO>
+
+  <!-- ANIM Definition Structure -->
+  <ANIM>
+    <AnimObj>
+        <prop name="AnimName" value="aWin" type="string"></prop>
+        <prop name="AnimFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/anim/aWin.bik" type="string"></prop>
+        <prop name="AnimType" value="2" type="i32"></prop>
+        <prop name="AnimRepeatValue" value="1" type="i32"></prop>
+        <prop name="AnimVolume" value="70" type="i32"></prop>
+        <prop name="AnimAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="AnimWidth" value="249" type="i32"></prop>
+        <prop name="AnimHeight" value="174" type="i32"></prop>
+        <prop name="AnimPlaybackRate" value="84" type="i32"></prop>
+        <prop name="AnimX" value="424" type="i32"></prop>
+        <prop name="AnimY" value="1492" type="i32"></prop>
+        <prop name="AnimZOrder" value="7" type="i32"></prop>
+        <prop name="AnimScreen" value="1" type="i32"></prop>
+        <prop name="AnimResidency" value="-1" type="i32"></prop>
+    </AnimObj>
+    <AnimObj>
+        <prop name="AnimName" value="aNoWin" type="string"></prop>
+        <prop name="AnimFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/anim/aNoWin.bik" type="string"></prop>
+        <prop name="AnimType" value="2" type="i32"></prop>
+        <prop name="AnimRepeatValue" value="1" type="i32"></prop>
+        <prop name="AnimVolume" value="70" type="i32"></prop>
+        <prop name="AnimAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="AnimWidth" value="249" type="i32"></prop>
+        <prop name="AnimHeight" value="174" type="i32"></prop>
+        <prop name="AnimPlaybackRate" value="84" type="i32"></prop>
+        <prop name="AnimX" value="424" type="i32"></prop>
+        <prop name="AnimY" value="1492" type="i32"></prop>
+        <prop name="AnimZOrder" value="9" type="i32"></prop>
+        <prop name="AnimScreen" value="1" type="i32"></prop>
+        <prop name="AnimResidency" value="-1" type="i32"></prop>
+    </AnimObj>
+  </ANIM>
+
+  <!-- SEQUENCE Definition Structure -->
+  <SEQUENCE>
+  </SEQUENCE>
+
+  <!-- BITMAP Definition Structure -->
+  <BITMAP>
+    <BitmapObj>
+        <prop name="BitmapName" value="bWin" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bWin.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="249" type="i32"></prop>
+        <prop name="BitmapHeight" value="174" type="i32"></prop>
+        <prop name="BitmapX" value="424" type="i32"></prop>
+        <prop name="BitmapY" value="1492" type="i32"></prop>
+        <prop name="BitmapZOrder" value="4" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bBkgd" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bBkgd.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="1080" type="i32"></prop>
+        <prop name="BitmapHeight" value="1920" type="i32"></prop>
+        <prop name="BitmapX" value="0" type="i32"></prop>
+        <prop name="BitmapY" value="0" type="i32"></prop>
+        <prop name="BitmapZOrder" value="1" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bReel" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bReel.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="249" type="i32"></prop>
+        <prop name="BitmapHeight" value="174" type="i32"></prop>
+        <prop name="BitmapX" value="424" type="i32"></prop>
+        <prop name="BitmapY" value="1492" type="i32"></prop>
+        <prop name="BitmapZOrder" value="6" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bBlank" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bBlank.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="1" type="i32"></prop>
+        <prop name="BitmapHeight" value="1" type="i32"></prop>
+        <prop name="BitmapX" value="0" type="i32"></prop>
+        <prop name="BitmapY" value="1375" type="i32"></prop>
+        <prop name="BitmapZOrder" value="0" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bNoWin" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bNoWin.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="249" type="i32"></prop>
+        <prop name="BitmapHeight" value="174" type="i32"></prop>
+        <prop name="BitmapX" value="424" type="i32"></prop>
+        <prop name="BitmapY" value="1492" type="i32"></prop>
+        <prop name="BitmapZOrder" value="5" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bBkgdOZ" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bBkgdOZ.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="1080" type="i32"></prop>
+        <prop name="BitmapHeight" value="1920" type="i32"></prop>
+        <prop name="BitmapX" value="0" type="i32"></prop>
+        <prop name="BitmapY" value="0" type="i32"></prop>
+        <prop name="BitmapZOrder" value="2" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bGTWtop" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bGTWtop.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="201" type="i32"></prop>
+        <prop name="BitmapHeight" value="133" type="i32"></prop>
+        <prop name="BitmapX" value="440" type="i32"></prop>
+        <prop name="BitmapY" value="1303" type="i32"></prop>
+        <prop name="BitmapZOrder" value="48" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bHelpBkgd" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bHelpBkgd.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="1080" type="i32"></prop>
+        <prop name="BitmapHeight" value="1920" type="i32"></prop>
+        <prop name="BitmapX" value="0" type="i32"></prop>
+        <prop name="BitmapY" value="0" type="i32"></prop>
+        <prop name="BitmapZOrder" value="45" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bCancelOnly" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bCancelOnly.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="494" type="i32"></prop>
+        <prop name="BitmapHeight" value="23" type="i32"></prop>
+        <prop name="BitmapX" value="293" type="i32"></prop>
+        <prop name="BitmapY" value="1721" type="i32"></prop>
+        <prop name="BitmapZOrder" value="46" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bGambleToWin" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bGambleToWin.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="201" type="i32"></prop>
+        <prop name="BitmapHeight" value="133" type="i32"></prop>
+        <prop name="BitmapX" value="440" type="i32"></prop>
+        <prop name="BitmapY" value="1303" type="i32"></prop>
+        <prop name="BitmapZOrder" value="3" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bAttPayCancel" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bAttPayCancel.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="763" type="i32"></prop>
+        <prop name="BitmapHeight" value="48" type="i32"></prop>
+        <prop name="BitmapX" value="159" type="i32"></prop>
+        <prop name="BitmapY" value="1721" type="i32"></prop>
+        <prop name="BitmapZOrder" value="47" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bExitButton001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bExitButton001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="126" type="i32"></prop>
+        <prop name="BitmapHeight" value="29" type="i32"></prop>
+        <prop name="BitmapX" value="15" type="i32"></prop>
+        <prop name="BitmapY" value="1857" type="i32"></prop>
+        <prop name="BitmapZOrder" value="50" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bExitButton002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bExitButton002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="126" type="i32"></prop>
+        <prop name="BitmapHeight" value="29" type="i32"></prop>
+        <prop name="BitmapX" value="15" type="i32"></prop>
+        <prop name="BitmapY" value="1857" type="i32"></prop>
+        <prop name="BitmapZOrder" value="49" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bHelpButton001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bHelpButton001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="25" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bHelpButton002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bHelpButton002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="24" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bSpinButton001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bSpinButton001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="320" type="i32"></prop>
+        <prop name="BitmapHeight" value="156" type="i32"></prop>
+        <prop name="BitmapX" value="380" type="i32"></prop>
+        <prop name="BitmapY" value="1756" type="i32"></prop>
+        <prop name="BitmapZOrder" value="34" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bSpinButton002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bSpinButton002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="320" type="i32"></prop>
+        <prop name="BitmapHeight" value="156" type="i32"></prop>
+        <prop name="BitmapX" value="380" type="i32"></prop>
+        <prop name="BitmapY" value="1756" type="i32"></prop>
+        <prop name="BitmapZOrder" value="33" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bAttPayButton001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bAttPayButton001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1740" type="i32"></prop>
+        <prop name="BitmapZOrder" value="31" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bAttPayButton002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bAttPayButton002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1740" type="i32"></prop>
+        <prop name="BitmapZOrder" value="30" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bCancelButton001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bCancelButton001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1740" type="i32"></prop>
+        <prop name="BitmapZOrder" value="28" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bCancelButton002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bCancelButton002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1740" type="i32"></prop>
+        <prop name="BitmapZOrder" value="27" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bExitButtonSml001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bExitButtonSml001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="25" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="37" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bExitButtonSml002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bExitButtonSml002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="25" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="36" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bCancelButtonSml001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bCancelButtonSml001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="25" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="22" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bCancelButtonSml002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bCancelButtonSml002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="25" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="21" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bHelpButtonSmall001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bHelpButtonSmall001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="144" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="19" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bHelpButtonSmall002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bHelpButtonSmall002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="144" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="18" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="iHelpButtonSmall001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/iHelpButtonSmall001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="144" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="40" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="iHelpButtonSmall002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/iHelpButtonSmall002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="104" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="144" type="i32"></prop>
+        <prop name="BitmapY" value="1810" type="i32"></prop>
+        <prop name="BitmapZOrder" value="39" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bCancelCreditButton001" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bCancelCreditButton001.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1740" type="i32"></prop>
+        <prop name="BitmapZOrder" value="42" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+    <BitmapObj>
+        <prop name="BitmapName" value="bCancelCreditButton002" type="string"></prop>
+        <prop name="BitmapFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/bitmap/bCancelCreditButton002.png" type="string"></prop>
+        <prop name="BitmapAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="BitmapWidth" value="222" type="i32"></prop>
+        <prop name="BitmapHeight" value="50" type="i32"></prop>
+        <prop name="BitmapX" value="26" type="i32"></prop>
+        <prop name="BitmapY" value="1740" type="i32"></prop>
+        <prop name="BitmapZOrder" value="41" type="i32"></prop>
+        <prop name="BitmapScreen" value="1" type="i32"></prop>
+    </BitmapObj>
+  </BITMAP>
+
+  <!-- DIRECT Definition Structure -->
+  <DIRECT>
+  </DIRECT>
+
+  <!-- TOUCHBUTTON Definition Structure -->
+  <TOUCHBUTTON>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="AttendantPayButton" type="string"></prop>
+        <prop name="TouchButtonWidth" value="222" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="50" type="i32"></prop>
+        <prop name="TouchButtonX" value="26" type="i32"></prop>
+        <prop name="TouchButtonY" value="1740" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="CancelButtonSml" type="string"></prop>
+        <prop name="TouchButtonWidth" value="104" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="50" type="i32"></prop>
+        <prop name="TouchButtonX" value="25" type="i32"></prop>
+        <prop name="TouchButtonY" value="1810" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="ExitButtonSml" type="string"></prop>
+        <prop name="TouchButtonWidth" value="104" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="50" type="i32"></prop>
+        <prop name="TouchButtonX" value="25" type="i32"></prop>
+        <prop name="TouchButtonY" value="1810" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="bAttPayCancel" type="string"></prop>
+        <prop name="TouchButtonWidth" value="767" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="102" type="i32"></prop>
+        <prop name="TouchButtonX" value="158" type="i32"></prop>
+        <prop name="TouchButtonY" value="1721" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="tCancelButton" type="string"></prop>
+        <prop name="TouchButtonWidth" value="222" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="50" type="i32"></prop>
+        <prop name="TouchButtonX" value="26" type="i32"></prop>
+        <prop name="TouchButtonY" value="1740" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="tCancelCreditButton" type="string"></prop>
+        <prop name="TouchButtonWidth" value="222" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="50" type="i32"></prop>
+        <prop name="TouchButtonX" value="26" type="i32"></prop>
+        <prop name="TouchButtonY" value="1740" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="tExitButton" type="string"></prop>
+        <prop name="TouchButtonWidth" value="126" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="29" type="i32"></prop>
+        <prop name="TouchButtonX" value="15" type="i32"></prop>
+        <prop name="TouchButtonY" value="1857" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="tHandleBall" type="string"></prop>
+        <prop name="TouchButtonWidth" value="50" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="133" type="i32"></prop>
+        <prop name="TouchButtonX" value="604" type="i32"></prop>
+        <prop name="TouchButtonY" value="1527" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="tHelpButton" type="string"></prop>
+        <prop name="TouchButtonWidth" value="222" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="50" type="i32"></prop>
+        <prop name="TouchButtonX" value="26" type="i32"></prop>
+        <prop name="TouchButtonY" value="1810" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="tHelpButtonSml" type="string"></prop>
+        <prop name="TouchButtonWidth" value="104" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="50" type="i32"></prop>
+        <prop name="TouchButtonX" value="144" type="i32"></prop>
+        <prop name="TouchButtonY" value="1810" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+    <TouchButtonObj>
+        <prop name="TouchButtonName" value="tSpinButton" type="string"></prop>
+        <prop name="TouchButtonWidth" value="320" type="i32"></prop>
+        <prop name="TouchButtonHeight" value="156" type="i32"></prop>
+        <prop name="TouchButtonX" value="380" type="i32"></prop>
+        <prop name="TouchButtonY" value="1756" type="i32"></prop>
+        <prop name="TouchButtonScreen" value="1" type="i32"></prop>
+    </TouchButtonObj>
+  </TOUCHBUTTON>
+
+  <!-- DRAGGABLEBUTTON Definition Structure -->
+  <DRAGGABLEBUTTON>
+  </DRAGGABLEBUTTON>
+
+  <!-- METER Definition Structure -->
+  <METER>
+    <MeterObj>
+        <prop name="MeterName" value="mCash" type="string"></prop>
+        <prop name="MeterGFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/meter/mCash.png" type="string"></prop>
+        <prop name="MeterAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="MeterGWidth" value="247" type="i32"></prop>
+        <prop name="MeterGHeight" value="64" type="i32"></prop>
+        <prop name="MeterGX" value="833" type="i32"></prop>
+        <prop name="MeterGY" value="1717" type="i32"></prop>
+        <prop name="MeterGZOrder" value="17" type="i32"></prop>
+        <prop name="MeterWidth" value="190" type="i32"></prop>
+        <prop name="MeterHeight" value="26" type="i32"></prop>
+        <prop name="MeterX" value="9" type="i32"></prop>
+        <prop name="MeterY" value="8" type="i32"></prop>
+        <prop name="MeterZOrder" value="1" type="i32"></prop>
+        <prop name="MeterScreen" value="1" type="i32"></prop>
+        <prop name="MeterType" value="0" type="i32"></prop>
+        <prop name="MeterHorizontalJustification" value="0" type="i32"></prop>
+        <prop name="MeterVerticalJustification" value="0" type="i32"></prop>
+        <prop name="ProductID" value="0" type="i32"></prop>
+        <prop name="SocketNumber" value="0" type="i32"></prop>
+        <prop name="MeterDelay" value="0" type="i32"></prop>
+        <prop name="MeterZeroDisplay" value="0" type="i32"></prop>
+    </MeterObj>
+    <MeterObj>
+        <prop name="MeterName" value="mGamble" type="string"></prop>
+        <prop name="MeterGFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/meter/mGamble.png" type="string"></prop>
+        <prop name="MeterAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="MeterGWidth" value="247" type="i32"></prop>
+        <prop name="MeterGHeight" value="64" type="i32"></prop>
+        <prop name="MeterGX" value="833" type="i32"></prop>
+        <prop name="MeterGY" value="1784" type="i32"></prop>
+        <prop name="MeterGZOrder" value="15" type="i32"></prop>
+        <prop name="MeterWidth" value="190" type="i32"></prop>
+        <prop name="MeterHeight" value="26" type="i32"></prop>
+        <prop name="MeterX" value="9" type="i32"></prop>
+        <prop name="MeterY" value="8" type="i32"></prop>
+        <prop name="MeterZOrder" value="1" type="i32"></prop>
+        <prop name="MeterScreen" value="1" type="i32"></prop>
+        <prop name="MeterType" value="0" type="i32"></prop>
+        <prop name="MeterHorizontalJustification" value="0" type="i32"></prop>
+        <prop name="MeterVerticalJustification" value="0" type="i32"></prop>
+        <prop name="ProductID" value="0" type="i32"></prop>
+        <prop name="SocketNumber" value="0" type="i32"></prop>
+        <prop name="MeterDelay" value="0" type="i32"></prop>
+        <prop name="MeterZeroDisplay" value="0" type="i32"></prop>
+    </MeterObj>
+    <MeterObj>
+        <prop name="MeterName" value="mPotentialWin" type="string"></prop>
+        <prop name="MeterGFileName" value="/games/Resources/DefaultSkin/en_US/Menu/features/RCGTOP0/meter/mPotentialWin.png" type="string"></prop>
+        <prop name="MeterAttachWithScreenRoot" value="0" type="i32"></prop>
+        <prop name="MeterGWidth" value="247" type="i32"></prop>
+        <prop name="MeterGHeight" value="64" type="i32"></prop>
+        <prop name="MeterGX" value="833" type="i32"></prop>
+        <prop name="MeterGY" value="1851" type="i32"></prop>
+        <prop name="MeterGZOrder" value="13" type="i32"></prop>
+        <prop name="MeterWidth" value="190" type="i32"></prop>
+        <prop name="MeterHeight" value="26" type="i32"></prop>
+        <prop name="MeterX" value="9" type="i32"></prop>
+        <prop name="MeterY" value="8" type="i32"></prop>
+        <prop name="MeterZOrder" value="1" type="i32"></prop>
+        <prop name="MeterScreen" value="1" type="i32"></prop>
+        <prop name="MeterType" value="0" type="i32"></prop>
+        <prop name="MeterHorizontalJustification" value="0" type="i32"></prop>
+        <prop name="MeterVerticalJustification" value="0" type="i32"></prop>
+        <prop name="ProductID" value="0" type="i32"></prop>
+        <prop name="SocketNumber" value="0" type="i32"></prop>
+        <prop name="MeterDelay" value="0" type="i32"></prop>
+        <prop name="MeterZeroDisplay" value="0" type="i32"></prop>
+    </MeterObj>
+  </METER>
+
+  <!-- POSDEF Definition Structure -->
+  <POSDEF>
+  </POSDEF>
+
+
+  <!-- AUDIO Definition Structure -->
+  <AUDIO>
+    <AudioObj>
+        <prop name="AudioName" value="GTW_Spin" type="string"></prop>
+        <prop name="AudioFileName" value="%MENUCOMMONASSETPATH%/features/RCGTOP0/sounds/GTW_Spin.wav" type="string"></prop>
+        <prop name="AudioRepeatValue" value="1" type="i32"></prop>
+        <prop name="AudioVolume" value="70" type="i32"></prop>
+        <prop name="AudioPan" value="50" type="i32"></prop>
+    </AudioObj>
+    <AudioObj>
+        <prop name="AudioName" value="bonus_times_short" type="string"></prop>
+        <prop name="AudioFileName" value="%MENUCOMMONASSETPATH%/features/RCGTOP0/sounds/bonus_times_short.wav" type="string"></prop>
+        <prop name="AudioRepeatValue" value="1" type="i32"></prop>
+        <prop name="AudioVolume" value="90" type="i32"></prop>
+        <prop name="AudioPan" value="50" type="i32"></prop>
+    </AudioObj>
+    <AudioObj>
+        <prop name="AudioName" value="bt_short_fadein" type="string"></prop>
+        <prop name="AudioFileName" value="%MENUCOMMONASSETPATH%/features/RCGTOP0/sounds/bt_short_fadein.wav" type="string"></prop>
+        <prop name="AudioRepeatValue" value="1" type="i32"></prop>
+        <prop name="AudioVolume" value="100" type="i32"></prop>
+        <prop name="AudioPan" value="50" type="i32"></prop>
+    </AudioObj>
+    <AudioObj>
+        <prop name="AudioName" value="bt_short_fadeout" type="string"></prop>
+        <prop name="AudioFileName" value="%MENUCOMMONASSETPATH%/features/RCGTOP0/sounds/bt_short_fadeout.wav" type="string"></prop>
+        <prop name="AudioRepeatValue" value="1" type="i32"></prop>
+        <prop name="AudioVolume" value="75" type="i32"></prop>
+        <prop name="AudioPan" value="50" type="i32"></prop>
+    </AudioObj>
+    <AudioObj>
+        <prop name="AudioName" value="credit_rack_2500_ms" type="string"></prop>
+        <prop name="AudioFileName" value="%MENUCOMMONASSETPATH%/features/RCGTOP0/sounds/credit_rack_2500_ms.wav" type="string"></prop>
+        <prop name="AudioRepeatValue" value="1" type="i32"></prop>
+        <prop name="AudioVolume" value="70" type="i32"></prop>
+        <prop name="AudioPan" value="50" type="i32"></prop>
+    </AudioObj>
+  </AUDIO>
+
+  <!-- FONT Definition Structure -->
+  <FONT>
+    <FontObj>
+        <prop name="FontName" value="fCredit" type="string"></prop>
+        <prop name="FontFileName" value="%MENUCOMMONASSETPATH%/features/RCGTOP0/fonts/arialbd-10-white-uni.fnt" type="string"></prop>
+    </FontObj>
+    <FontObj>
+        <prop name="FontName" value="fDefault" type="string"></prop>
+        <prop name="FontFileName" value="%MENUCOMMONASSETPATH%/features/RCGTOP0/fonts/arialbd-10-white-uni.fnt" type="string"></prop>
+    </FontObj>
+  </FONT>
+</FEATDEFS>

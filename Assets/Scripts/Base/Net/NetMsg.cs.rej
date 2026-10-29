@@ -1,0 +1,10 @@
+diff a/Assets/Scripts/Base/Net/NetMsg.cs b/Assets/Scripts/Base/Net/NetMsg.cs	(rejected hunks)
+@@ -115,7 +115,7 @@
+ }
+ public class playerData
+ {
+-    public int[] selfBetTextList = new int[5];              //玩家押分列表
++    public int[] selfBetTextList = new int[9];              //玩家押分列表
+     public int selfWinScore;                                //玩家赢分
+     public int selfCredit;                                  //玩家credit
+ }

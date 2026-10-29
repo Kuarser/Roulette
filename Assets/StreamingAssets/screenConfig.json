@@ -1,0 +1,18 @@
+[
+    {
+        "display": 0,
+        "cullingMask": 6,
+        "screenHeight": 720,
+		"screenWidth": 1280,
+        "rawMaxX": 4095,
+        "rawMaxY": 4095
+    },
+    {
+        "display": 1,
+        "cullingMask": 5,
+        "screenHeight": 1080,
+		"screenWidth": 1920,
+        "rawMaxX": 9600,
+        "rawMaxY": 9600
+    }
+]

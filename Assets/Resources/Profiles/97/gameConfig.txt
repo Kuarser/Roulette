@@ -1,0 +1,24 @@
+<!-- gameConfig.cfg 97% -->
+<GameConfig>
+    <PaytableID>Z020097C</PaytableID> <!-- SMI -->
+    <GameFamily>Roulette</GameFamily>
+    <GameType>RouletteDeluxeSZ</GameType>
+    <GameId>RouletteDeluxeSZ97</GameId>
+
+    <GamePct>97.30</GamePct>
+    <GameMinPct>97.30</GameMinPct>
+
+    <!-- Automatically modified by 'make config' -->
+    <MinimumMaxBet>1</MinimumMaxBet>
+
+    <AllowedDenominations>1,2,5,10,20,25,50,100,200,500,1000,2500,5000,10000,25000,50000</AllowedDenominations>
+
+    <GameHostID>
+        <string name="SDSHOST" value="20097C"/> <!-- Unique Message ID: 6 chars max -->
+        <string name="SASHOST" value="20097C"/> <!-- Unique Message ID: 6 chars max -->
+    </GameHostID>
+
+    <GameLogo>RouletteDeluxeSZLogo.png</GameLogo>
+
+</GameConfig>
+

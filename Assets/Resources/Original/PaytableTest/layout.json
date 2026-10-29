@@ -1,0 +1,123 @@
+{
+  "buttons": [
+    {
+      "x": 834,
+      "y": 771,
+      "width": 180,
+      "height": 40
+    },
+    {
+      "x": 834,
+      "y": 821,
+      "width": 180,
+      "height": 40
+    },
+    {
+      "x": 834,
+      "y": 771,
+      "width": 180,
+      "height": 40
+    },
+    {
+      "x": 834,
+      "y": 821,
+      "width": 180,
+      "height": 40
+    },
+    {
+      "x": 834,
+      "y": 871,
+      "width": 180,
+      "height": 40
+    },
+    {
+      "x": 834,
+      "y": 871,
+      "width": 180,
+      "height": 40
+    }
+  ],
+  "buttonLabels": [
+    "Pays",
+    "Evaluate",
+    "Return",
+    "Back",
+    "Next",
+    "Nudge wheel"
+  ],
+  "messageWindow": {
+    "x": 213,
+    "y": 686,
+    "width": 555,
+    "height": 74
+  },
+  "messages": [
+    {
+      "x": 9,
+      "y": 6
+    },
+    {
+      "x": 5,
+      "y": 41
+    },
+    {
+      "x": 317,
+      "y": 2
+    },
+    {
+      "x": 319,
+      "y": 39
+    },
+    {
+      "x": 587,
+      "y": 4
+    }
+  ],
+  "totalBetLabel": "Total Bet",
+  "payLabel": "Game Pays",
+  "wheelStops": [
+    9,
+    31,
+    14,
+    20,
+    1,
+    33,
+    16,
+    24,
+    5,
+    10,
+    23,
+    8,
+    30,
+    11,
+    36,
+    13,
+    27,
+    6,
+    34,
+    17,
+    25,
+    2,
+    21,
+    4,
+    19,
+    15,
+    32,
+    0,
+    26,
+    3,
+    35,
+    12,
+    28,
+    7,
+    29,
+    18,
+    22
+  ],
+  "wheelRadius": 205.0,
+  "wheelCenter": {
+    "x": 472,
+    "y": 384
+  },
+  "framesPerStop": 2.0
+}

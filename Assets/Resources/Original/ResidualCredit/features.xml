@@ -1,0 +1,1757 @@
+<?xml version="1.0" ?>
+<!DOCTYPE FEATURES SYSTEM "features.dtd">
+<FEATURES>
+    <!-- Help with Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_Help_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="4" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayCancel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Help with Handpay Only -->
+    <FeatureObj>
+        <FeatureName name="f_Help_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="4" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayOnly" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Help with Cancel Only -->
+    <FeatureObj>
+        <FeatureName name="f_Help_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="4" />                                     
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelOnly" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Help -->
+    <FeatureObj>
+        <FeatureName name="f_Help" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="3" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Scroll Up Help with Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpHelp_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="4" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayCancel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Up Help with Handpay Only -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpHelp_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="4" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayOnly" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Up Help with Cancel Only -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpHelp_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="4" />                                     
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelOnly" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Up Help -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpHelp" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="3" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Scroll Down Help with Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownHelp_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="4" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayCancel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Help with Handpay Only -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownHelp_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="4" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayOnly" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Help with Cancel Only -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownHelp_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="4" />                                     
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelOnly" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Help -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownHelp" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="3" />
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGTWtop" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bExitButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_Background_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="7" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_Background_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="6" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_Background_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="6" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_Background" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="5" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton001" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Disabled Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledBkgd_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="6" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Disabled Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledBkgd_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="5" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Disabled Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledBkgd_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="5" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Disabled Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledBkgd" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="4" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>                  
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Scroll Up Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpBkgd_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="10" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+       </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml001" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Up Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpBkgd_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton001" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Up Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpBkgd_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton001" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Up Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollUpBkgd" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="1920" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="0" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="8" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton001" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton001" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Scroll Down Disabled Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownBkgd_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="10" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Disabled Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownBkgd_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Disabled Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownBkgd_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Disabled Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownBkgd" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="8" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>                  
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Disabled Win Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledWin_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="7" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_Win" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Disabled Win Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledWin_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="6" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_Win" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Disabled Win Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledWin_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="6" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_Win" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Disabled Win Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledWin" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="5" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>                  
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_Win" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+
+    <!-- Scroll Down Win Disabled Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownWin_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="10" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Win Disabled Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownWin_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Win Disabled Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownWin_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Win Disabled Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownWin" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="8" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>                  
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Disabled Lose Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledLose_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="7" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_NoWin" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Disabled Lose Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledLose_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="6" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_NoWin" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Disabled Lose Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledLose_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="6" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_NoWin" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Disabled Lose Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_DisabledLose" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="5" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>                  
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Spin_NoWin" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+
+    <!-- Scroll Down Lose Disabled Background with Help, Handpay and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownLose_HandpayCancel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="10" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButtonSmall002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButtonSml002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Lose Disabled Background with Help and Handpay -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownLose_HandpayOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bAttPayButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Lose Disabled Background with Help and Cancel -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownLose_CancelOnly" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="9" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bCancelButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Scroll Down Lose Disabled Background with Help -->
+    <FeatureObj>
+        <FeatureName name="f_ScrollDownLose" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureTransPos mode="start" type="x" value="0" />
+        <FeatureTransPos mode="start" type="y" value="0" />
+        <FeatureTransPos mode="end" type="x" value="0" />
+        <FeatureTransPos mode="end" type="y" value="1920" />
+        <FeatureTransDelay value="500" />
+        <FeatureObjCount value="8" />
+        <BitmapFeatureObj>
+            <BitmapName name="bBkgd" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bNoWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bGambleToWin" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bSpinButton002" />
+        </BitmapFeatureObj>
+        <BitmapFeatureObj>
+            <BitmapName name="bHelpButton002" />
+        </BitmapFeatureObj>                  
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="0" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Display Meters -->
+    <FeatureObj>
+        <FeatureName name="f_Display_Meters" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="3" />
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Display Blank Reels -->
+    <FeatureObj>
+        <FeatureName name="f_Display_Reel" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <BitmapFeatureObj>
+            <BitmapName name="bReel" />
+        </BitmapFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+
+    <!-- Display Meters -->
+    <FeatureObj>
+        <FeatureName name="f_Display_Gamble_Meters" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="2" />
+        <MeterFeatureObj>
+            <MeterName name="mGamble" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <MeterFeatureObj>
+            <MeterName name="mPotentialWin" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Rack Meters -->
+    <FeatureObj>
+        <FeatureName name="f_Rack_Meters" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="1" />
+            <MeterDelay value="1500" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="3" />
+        <TriggerFeatureObj>
+            <TriggerName name="f_Display_Gamble_Meters" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerWinDataOffset value="1" />
+        </TriggerFeatureObj>
+        <TriggerFeatureObj>
+            <TriggerName name="f_Rack_Snd" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+        </TriggerFeatureObj>
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="1" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Rack_Snd" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+
+    <!-- Rack Meters -->
+    <FeatureObj>
+        <FeatureName name="f_Rack_Lose_Meters" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <MeterFeatureObj>
+            <MeterName name="mCash" />
+            <MeterType value="1" />
+            <MeterDelay value="500" />
+            <MeterZeroDisplay value="1" />
+        </MeterFeatureObj>
+        <FeatureTriggerCount value="1" />
+        <TriggerFeatureObj>
+            <TriggerName name="f_Display_Gamble_Meters" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerWinDataOffset value="1" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+
+    <!-- Spin Reel to Win -->
+    <FeatureObj>
+        <FeatureName name="f_Spin_Win" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <AnimFeatureObj>
+            <AnimName name="aWin" />
+            <AnimLoopCount value="1" />
+            <AnimHoldFrame value="1" />
+        </AnimFeatureObj>
+        <FeatureTriggerCount value="2" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Display_Reel" />
+        </TriggerFeatureObj>
+        <TriggerFeatureObj>
+            <TriggerName name="f_Spin_Snd" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Spin Reel to No Win -->
+    <FeatureObj>
+        <FeatureName name="f_Spin_NoWin" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <AnimFeatureObj>
+            <AnimName name="aNoWin" />
+            <AnimLoopCount value="1" />
+            <AnimHoldFrame value="1" />
+        </AnimFeatureObj>
+        <FeatureTriggerCount value="2" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+            <TriggerKillName name="f_Display_Reel" />
+        </TriggerFeatureObj>
+        <TriggerFeatureObj>
+            <TriggerName name="f_Spin_Snd" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="1" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- f_sndFadeIn -->
+    <FeatureObj>
+        <FeatureName name="f_sndFadeIn" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <AudioFeatureObj>
+            <AudioName name="bt_short_fadein" />
+            <AudioLoopCount value="1" />
+        </AudioFeatureObj>
+        <FeatureTriggerCount value="1" />
+         <TriggerFeatureObj>
+            <TriggerName name="f_sndLoop" />
+            <TriggerIndex value="1" />
+            <TriggerDone value="0" />
+        </TriggerFeatureObj>
+    </FeatureObj>
+    
+    <!-- f_sndLoop -->
+    <FeatureObj>
+        <FeatureName name="f_sndLoop" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <AudioFeatureObj>
+            <AudioName name="bonus_times_short" />
+            <AudioLoopCount value="-1" />
+        </AudioFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- f_sndFadeOut -->
+    <FeatureObj>
+        <FeatureName name="f_sndFadeOut" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <AudioFeatureObj>
+            <AudioName name="bt_short_fadeout" />
+            <AudioLoopCount value="1" />
+        </AudioFeatureObj>
+        <FeatureTriggerCount value="2" />
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+           <TriggerKillName name="f_sndFadeIn" />
+       </TriggerFeatureObj>
+        <TriggerFeatureObj>
+            <TriggerName name="" />
+            <TriggerIndex value="0" />
+            <TriggerDone value="0" />
+           <TriggerKillName name="f_sndLoop" />
+       </TriggerFeatureObj>
+    </FeatureObj>
+
+    <!-- Spin Reel Sound -->
+    <FeatureObj>
+        <FeatureName name="f_Spin_Snd" />
+        <Feature type="PlayInSequence" value="1" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <AudioFeatureObj>
+            <AudioName name="GTW_Spin" />
+            <AudioLoopCount value="1" />
+        </AudioFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+    <!-- Rack Sound -->
+    <FeatureObj>
+        <FeatureName name="f_Rack_Snd" />
+        <Feature type="PlayInSequence" value="0" />
+        <Feature type="Dynamic" value="0" />
+        <FeatureObjCount value="1" />
+        <AudioFeatureObj>
+            <AudioName name="s_rack2sec" />
+            <AudioLoopCount value="-1" />
+        </AudioFeatureObj>
+        <FeatureTriggerCount value="0" />
+    </FeatureObj>
+
+</FEATURES>

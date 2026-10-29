@@ -1,0 +1,276 @@
+/************************************************************************/
+/*                                NOTICE                                */
+/*                                                                      */
+/*      THIS DOCUMENT REPRESENTS CONFIDENTIAL PROPRIETARY PROGRAM       */
+/*      PRODUCTS AND PROPRIETARY INFORMATION OF BALLY GAMING,INC.       */
+/*      NEITHER RECEIPT NOR POSSESSION THEREOF CONFERS ANY  RIGHT       */
+/*      TO REPRODUCE, OR USE, OR DISCLOSE IN  WHOLE  OR IN  PART.       */
+/*      ANY SUCH PROGRAM, PRODUCT OR ANY SUCH INFORMATION WITHOUT       */
+/*      WRITTEN AUTHORIZATION FROM BALLY GAMING, INC.                   */
+/*                                                                      */
+/*               COPYRIGHT 2014 BALLY GAMING INC.                       */
+/*                         ALL RIGHTS RESERVED                          */
+/*                                                                      */
+/************************************************************************/
+//
+//          Percent: 86.49% - 97.30%
+//              SMI: SMI-Z020097A
+//         PC Sheet: Z020097A.xlsx
+
+
+paytableflags
+{
+//    0x00000040	// Game supports Additional Wager capability
+      0x0000000
+}
+
+// Options for the base paytable
+// defaultbet = bet to choose when initially optioned [REQUIRED]
+//              ["defaultbet" is a 'traditional' keyword that has
+//               been used in paytable.cfg files for other game types]
+// adjmaxbet  = max bet that can be set (if defaultbet != maxbet,
+//	        then the game has adjustable max bet) [REQUIRED]
+//              [this "adjmaxbet" (for the base paytable) is not the same as
+//               the "maxbet" keyword in the Roulette Win Records, since different
+//               Win Records could have different 'minbet's and/or 'maxbet's]
+// maxcurrencywager (optional)
+// winlimit (optional), Maximum that can be won in 1 game (on 1 credit)
+// triggerlinebet and triggernumlines (optional) (triggerlinebet <= adjmaxbet)
+paytableoptions
+{
+           defaultbet=1, adjmaxbet=99, maxCurrencyWager=15444
+}
+
+gametypeoptions
+{
+    egametype = 4, 
+    Game_Name = "RouletteDeluxeSZ",
+    paytablename = "RouletteDeluxeSZ89", 
+    paytablebasepct = 89,
+    doublezero = 0, 
+    enprisonrule = 0, 
+    alwayspaypatterns = 0,
+    betspotmaxwager = 99,
+    gamemaximumpct = 97.297297,
+    gameminimumpct = 86.486486,
+
+    // and 15 'wager category dividers, interpolated from 'wager category' begin and end values
+    wagercat01d02pct = 96.935000, wagercat02d03pct = 96.215000, wagercat03d04pct = 95.495000,
+    wagercat04d05pct = 94.775000, wagercat05d06pct = 94.045000, wagercat06d07pct = 93.325000,
+    wagercat07d08pct = 92.605000, wagercat08d09pct = 91.885000, wagercat09d10pct = 91.165000,
+    wagercat10d11pct = 90.445000, wagercat11d12pct = 89.725000, wagercat12d13pct = 89.005000,
+    wagercat13d14pct = 88.285000, wagercat14d15pct = 87.565000, wagercat15d16pct = 86.845000
+}
+
+winrecords
+{
+// 1 way bets (Single-number bets)
+{{wtype=ROULETTE_STRAIGHT}, id=100, nn= 0,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=101, nn= 1,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=102, nn= 2,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=103, nn= 3,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=104, nn= 4,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=105, nn= 5,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=106, nn= 6,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=107, nn= 7,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=108, nn= 8,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=109, nn= 9,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=110, nn=10,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=111, nn=11,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=112, nn=12,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=113, nn=13,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=114, nn=14,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=115, nn=15,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=116, nn=16,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=117, nn=17,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=118, nn=18,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=119, nn=19,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=120, nn=20,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=121, nn=21,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=122, nn=22,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=123, nn=23,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=124, nn=24,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=125, nn=25,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=126, nn=26,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=127, nn=27,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=128, nn=28,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=129, nn=29,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=130, nn=30,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=131, nn=31,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=132, nn=32,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=133, nn=33,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=134, nn=34,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=135, nn=35,   minbet=1, xbet=1, winlvl=2, win=32},
+{{wtype=ROULETTE_STRAIGHT}, id=136, nn=36,   minbet=1, xbet=1, winlvl=2, win=32},
+
+// 18 way bets
+// first half 'low' 1-18
+{{wtype=ROULETTE_LOW_HIGH},  id=137, minbet=1, xbet=1, winlvl=7, win= 2,
+   nn=1, nn=2, nn=3, nn=4, nn=5, nn=6, nn=7, nn=8, nn=9,
+               nn=10, nn=11, nn=12, nn=13, nn=14, nn=15, nn=16, nn=17, nn=18 },
+// even numbers 2, 4, 6 . . .
+{{wtype=ROULETTE_ODD_EVEN},  id=138, minbet=1, xbet=1, winlvl=7, win= 2,
+   nn=2, nn=4, nn=6, nn=8, nn=10, nn=12, nn=14, nn=16, nn=18,
+               nn=20, nn=22, nn=24, nn=26, nn=28, nn=30, nn=32, nn=34, nn=36 },
+// red numbers 
+{{wtype=ROULETTE_RED_BLACK}, id=139,  minbet=1, xbet=1, winlvl=7, win= 2,
+   nn=1, nn=3, nn=5, nn=7, nn=9, nn=12, nn=14, nn=16, nn=18,
+               nn=19, nn=21, nn=23, nn=25, nn=27, nn=30, nn=32, nn=34, nn=36 },
+// black numbers
+{{wtype=ROULETTE_RED_BLACK}, id=140,  minbet=1, xbet=1, winlvl=7, win= 2,
+   nn=2, nn=4, nn=6, nn=8, nn=10, nn=11, nn=13, nn=15, nn=17,
+               nn=20, nn=22, nn=24, nn=26, nn=28, nn=29, nn=31, nn=33, nn=35 },
+// odd numbers 1, 3, 5 . . .
+{{wtype=ROULETTE_ODD_EVEN},  id=141,  minbet=1, xbet=1, winlvl=7, win= 2,
+   nn=1, nn=3, nn=5, nn=7, nn=9, nn=11, nn=13, nn=15, nn=17,
+               nn=19, nn=21, nn=23, nn=25, nn=27, nn=29, nn=31, nn=33, nn=35 },
+// second half 'high' 19-36
+{{wtype=ROULETTE_LOW_HIGH},  id=142,  minbet=1, xbet=1, winlvl=7, win= 2,
+   nn=19, nn=20, nn=21, nn=22, nn=23, nn=24, nn=25, nn=26, nn=27,
+                 nn=28, nn=29, nn=30, nn=31, nn=32, nn=33, nn=34, nn=35, nn=36 },
+//
+// 12 way bets
+// first dozen
+{{wtype=ROULETTE_DOZENS}, id=143,  minbet=1, xbet=1, winlvl=6, win= 3, nn= 1, nn= 2, nn= 3, nn= 4, nn= 5, nn= 6, nn= 7, nn= 8, nn= 9, nn=10, nn=11, nn=12 },
+// second dozen
+{{wtype=ROULETTE_DOZENS}, id=144,  minbet=1, xbet=1, winlvl=6, win= 3, nn=13, nn=14, nn=15, nn=16, nn=17, nn=18, nn=19, nn=20, nn=21, nn=22, nn=23, nn=24 },
+// third dozen
+{{wtype=ROULETTE_DOZENS}, id=145,  minbet=1, xbet=1, winlvl=6, win= 3, nn=25, nn=26, nn=27, nn=28, nn=29, nn=30, nn=31, nn=32, nn=33, nn=34, nn=35, nn=36 },
+// first column
+{{wtype=ROULETTE_COLUMNS}, id=146,  minbet=1, xbet=1, winlvl=6, win= 3, nn= 1, nn= 4, nn= 7, nn=10, nn=13, nn=16, nn=19, nn=22, nn=25, nn=28, nn=31, nn=34 },
+// second column
+{{wtype=ROULETTE_COLUMNS}, id=147,  minbet=1, xbet=1, winlvl=6, win= 3, nn= 2, nn= 5, nn= 8, nn=11, nn=14, nn=17, nn=20, nn=23, nn=26, nn=29, nn=32, nn=35 },
+// third column
+{{wtype=ROULETTE_COLUMNS}, id=148,  minbet=1, xbet=1, winlvl=6, win= 3, nn= 3, nn= 6, nn= 9, nn=12, nn=15, nn=18, nn=21, nn=24, nn=27, nn=30, nn=33, nn=36 },
+
+// STREET BETS - 3 way Street bet: 1,2,3
+{{wtype=ROULETTE_STREET}, id=149, minbet=1, xbet=1, winlvl=3, win=12, nn= 1, nn= 2, nn= 3 },
+{{wtype=ROULETTE_STREET}, id=150, minbet=1, xbet=1, winlvl=3, win=12, nn= 4, nn= 5, nn= 6 },
+{{wtype=ROULETTE_STREET}, id=151, minbet=1, xbet=1, winlvl=3, win=12, nn= 7, nn= 8, nn= 9 },
+{{wtype=ROULETTE_STREET}, id=152, minbet=1, xbet=1, winlvl=3, win=12, nn=10, nn=11, nn=12 },
+{{wtype=ROULETTE_STREET}, id=153, minbet=1, xbet=1, winlvl=3, win=12, nn=13, nn=14, nn=15 },
+{{wtype=ROULETTE_STREET}, id=154, minbet=1, xbet=1, winlvl=3, win=12, nn=16, nn=17, nn=18 },
+{{wtype=ROULETTE_STREET}, id=155, minbet=1, xbet=1, winlvl=3, win=12, nn=19, nn=20, nn=21 },
+{{wtype=ROULETTE_STREET}, id=156, minbet=1, xbet=1, winlvl=3, win=12, nn=22, nn=23, nn=24 },
+{{wtype=ROULETTE_STREET}, id=157, minbet=1, xbet=1, winlvl=3, win=12, nn=25, nn=26, nn=27 },
+{{wtype=ROULETTE_STREET}, id=158, minbet=1, xbet=1, winlvl=3, win=12, nn=28, nn=29, nn=30 },
+{{wtype=ROULETTE_STREET}, id=159, minbet=1, xbet=1, winlvl=3, win=12, nn=31, nn=32, nn=33 },
+{{wtype=ROULETTE_STREET}, id=160, minbet=1, xbet=1, winlvl=3, win=12, nn=34, nn=35, nn=36 },
+
+// LINE BETS - 6 way bets: 1,2,3,4,5,6
+{{wtype=ROULETTE_SIXER}, id=161,  minbet=1, xbet=1, winlvl=5, win=6, nn= 1, nn= 2, nn= 3, nn= 4, nn= 5, nn= 6 },
+{{wtype=ROULETTE_SIXER}, id=162,  minbet=1, xbet=1, winlvl=5, win=6, nn= 4, nn= 5, nn= 6, nn= 7, nn= 8, nn= 9 },
+{{wtype=ROULETTE_SIXER}, id=163,  minbet=1, xbet=1, winlvl=5, win=6, nn= 7, nn= 8, nn= 9, nn=10, nn=11, nn=12 },
+{{wtype=ROULETTE_SIXER}, id=164,  minbet=1, xbet=1, winlvl=5, win=6, nn=10, nn=11, nn=12, nn=13, nn=14, nn=15 },
+{{wtype=ROULETTE_SIXER}, id=165,  minbet=1, xbet=1, winlvl=5, win=6, nn=13, nn=14, nn=15, nn=16, nn=17, nn=18 },
+{{wtype=ROULETTE_SIXER}, id=166,  minbet=1, xbet=1, winlvl=5, win=6, nn=16, nn=17, nn=18, nn=19, nn=20, nn=21 },
+{{wtype=ROULETTE_SIXER}, id=167,  minbet=1, xbet=1, winlvl=5, win=6, nn=19, nn=20, nn=21, nn=22, nn=23, nn=24 },
+{{wtype=ROULETTE_SIXER}, id=168,  minbet=1, xbet=1, winlvl=5, win=6, nn=22, nn=23, nn=24, nn=25, nn=26, nn=27 },
+{{wtype=ROULETTE_SIXER}, id=169,  minbet=1, xbet=1, winlvl=5, win=6, nn=25, nn=26, nn=27, nn=28, nn=29, nn=30 },
+{{wtype=ROULETTE_SIXER}, id=170,  minbet=1, xbet=1, winlvl=5, win=6, nn=28, nn=29, nn=30, nn=31, nn=32, nn=33 },
+{{wtype=ROULETTE_SIXER}, id=171,  minbet=1, xbet=1, winlvl=5, win=6, nn=31, nn=32, nn=33, nn=34, nn=35, nn=36 },
+
+// SPLIT BETS - 2 way bets: 1,2
+{{wtype=ROULETTE_SPLIT}, id=172, nn= 1, nn= 2, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=173, nn= 2, nn= 3, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=174, nn= 4, nn= 5, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=175, nn= 5, nn= 6, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=176, nn= 7, nn= 8, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=177, nn= 8, nn= 9, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=178, nn=10, nn=11, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=179, nn=11, nn=12, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=180, nn=13, nn=14, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=181, nn=14, nn=15, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=182, nn=16, nn=17, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=183, nn=17, nn=18, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=184, nn=19, nn=20, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=185, nn=20, nn=21, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=186, nn=22, nn=23, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=187, nn=23, nn=24, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=188, nn=25, nn=26, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=189, nn=26, nn=27, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=190, nn=28, nn=29, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=191, nn=29, nn=30, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=192, nn=31, nn=32, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=193, nn=32, nn=33, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=194, nn=34, nn=35, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=195, nn=35, nn=36, minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=196, nn= 1, nn= 4,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=197, nn= 2, nn= 5,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=198, nn= 3, nn= 6,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=199, nn= 4, nn= 7,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=200, nn= 5, nn= 8,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=201, nn= 6, nn= 9,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=202, nn= 7, nn=10,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=203, nn= 8, nn=11,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=204, nn= 9, nn=12,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=205, nn=10, nn=13,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=206, nn=11, nn=14,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=207, nn=12, nn=15,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=208, nn=13, nn=16,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=209, nn=14, nn=17,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=210, nn=15, nn=18,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=211, nn=16, nn=19,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=212, nn=17, nn=20,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=213, nn=18, nn=21,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=214, nn=19, nn=22,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=215, nn=20, nn=23,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=216, nn=21, nn=24,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=217, nn=22, nn=25,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=218, nn=23, nn=26,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=219, nn=24, nn=27,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=220, nn=25, nn=28,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=221, nn=26, nn=29,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=222, nn=27, nn=30,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=223, nn=28, nn=31,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=224, nn=29, nn=32,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=225, nn=30, nn=33,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=226, nn=31, nn=34,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=227, nn=32, nn=35,  minbet=1, xbet=1, winlvl=2, win=16 },
+{{wtype=ROULETTE_SPLIT}, id=228, nn=33, nn=36,  minbet=1, xbet=1, winlvl=2, win=16 },
+
+// 4 way bet
+{{wtype=ROULETTE_CORNER}, id=229, nn= 1, nn= 2, nn= 4, nn= 5,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=230, nn= 2, nn= 3, nn= 5, nn= 6,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=231, nn= 4, nn= 5, nn= 7, nn= 8,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=232, nn= 5, nn= 6, nn= 8, nn= 9,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=233, nn= 7, nn= 8, nn=10, nn=11,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=234, nn= 8, nn= 9, nn=11, nn=12,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=235, nn=10, nn=11, nn=13, nn=14,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=236, nn=11, nn=12, nn=14, nn=15,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=237, nn=13, nn=14, nn=16, nn=17,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=238, nn=14, nn=15, nn=17, nn=18,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=239, nn=16, nn=17, nn=19, nn=20,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=240, nn=17, nn=18, nn=20, nn=21,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=241, nn=19, nn=20, nn=22, nn=23,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=242, nn=20, nn=21, nn=23, nn=24,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=243, nn=22, nn=23, nn=25, nn=26,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=244, nn=23, nn=24, nn=26, nn=27,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=245, nn=25, nn=26, nn=28, nn=29,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=246, nn=26, nn=27, nn=29, nn=30,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=247, nn=28, nn=29, nn=31, nn=32,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=248, nn=29, nn=30, nn=32, nn=33,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=249, nn=31, nn=32, nn=34, nn=35,  minbet=1, xbet=1, winlvl=4, win= 9 },
+{{wtype=ROULETTE_CORNER}, id=250, nn=32, nn=33, nn=35, nn=36,  minbet=1, xbet=1, winlvl=4, win= 9 },
+
+//
+// First 4
+{{wtype=ROULETTE_FIRST_FOUR}, id=251,  minbet=1, xbet=1, winlvl=5, win= 9, nn=0, nn=1, nn=2, nn=3 },
+
+// 2 way split bet with single-0, 0/1
+{{wtype=ROULETTE_SPLIT}, id=252,  minbet=1, xbet=1, winlvl=2, win=16, nn=0, nn=1 },
+
+// 3 way intersection bet with single-0, 0/1/2
+{{wtype=ROULETTE_TRIPLE}, id=253,  minbet=1, xbet=1, winlvl=2, win=12, nn=0, nn=1, nn=2 },
+
+// 2 way split bet with single-0, 0/2
+{{wtype=ROULETTE_SPLIT}, id=254,  minbet=1, xbet=1, winlvl=3, win=16, nn=0, nn=2 },
+
+// 3 way intersection bet with single-0, 0/2/3
+{{wtype=ROULETTE_TRIPLE}, id=255,  minbet=1, xbet=1, winlvl=2, win=12, nn=0, nn=2, nn=3 },
+
+// 2 way split bet 0/3
+{{wtype=ROULETTE_SPLIT}, id=256,  minbet=1, xbet=1, winlvl=2, win=16, nn=0, nn=3 }
+}
+
+

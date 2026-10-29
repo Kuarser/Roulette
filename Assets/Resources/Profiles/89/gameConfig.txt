@@ -1,0 +1,92 @@
+<!-- gameConfig.cfg 89% -->
+<GameConfig>
+    <PaytableID>Z020097A</PaytableID> <!-- SMI -->
+    <GameFamily>Roulette</GameFamily>
+    <GameType>RouletteDeluxeSZ</GameType>
+    <GameId>RouletteDeluxeSZ89</GameId>
+
+    <GamePct>97.30</GamePct>
+    <GameMinPct>86.49</GameMinPct>
+
+    <!-- Automatically modified by 'make config' -->
+    <MinimumMaxBet>1</MinimumMaxBet>
+
+    <AllowedDenominations>1,2,5,10,20,25,50,100,200,500,1000,2500,5000,10000,25000,50000</AllowedDenominations>
+
+    <GameHostID>
+        <string name="SDSHOST" value="20097A"/> <!-- Unique Message ID: 6 chars max -->
+        <string name="SASHOST" value="20097A"/> <!-- Unique Message ID: 6 chars max -->
+    </GameHostID>
+
+    <GameLogo>RouletteDeluxeSZLogo.png</GameLogo>
+
+
+    <WagerCategories>
+	<struct>
+		<field name="WagerCategory"    value="01"/>
+		<field name="WagerCategoryPct" value="97.30"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="02"/>
+		<field name="WagerCategoryPct" value="96.58"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="03"/>
+		<field name="WagerCategoryPct" value="95.86"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="04"/>
+		<field name="WagerCategoryPct" value="95.14"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="05"/>
+		<field name="WagerCategoryPct" value="94.41"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="06"/>
+		<field name="WagerCategoryPct" value="93.69"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="07"/>
+		<field name="WagerCategoryPct" value="92.97"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="08"/>
+		<field name="WagerCategoryPct" value="92.25"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="09"/>
+		<field name="WagerCategoryPct" value="91.53"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="10"/>
+		<field name="WagerCategoryPct" value="90.81"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="11"/>
+		<field name="WagerCategoryPct" value="90.09"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="12"/>
+		<field name="WagerCategoryPct" value="89.37"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="13"/>
+		<field name="WagerCategoryPct" value="88.65"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="14"/>
+		<field name="WagerCategoryPct" value="87.93"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="15"/>
+		<field name="WagerCategoryPct" value="87.21"/>
+	</struct>
+	<struct>
+		<field name="WagerCategory"    value="16"/>
+		<field name="WagerCategoryPct" value="86.49"/>
+	</struct>
+    </WagerCategories>
+
+</GameConfig>
+

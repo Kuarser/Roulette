@@ -1,0 +1,97 @@
+ManifestFileVersion: 0
+CRC: 1622600815
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5c4e9d9dbce889642fb5521f616d20c2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a370af552065b469980781ee10feaff6
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f636125bb6965b94099f2622efde5619, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a40cd597cbded9d4480c81fe6a09bd6e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2cbf5a4a7a7ceab4eb77e6f040f45b69, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ce7c382130a1e7643b3943de87b26ce2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d02dcc2fc6a4d12419b8904da6248ef0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a4409debb1e73c47af88d9e992f9844, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 92d0cc8d740eb404ca0e6f0f7258a4f0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6e20cf708e80aa44a98cba753ca25fce, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f311228f414e88e448eab373138a185e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9eaa844ae8922a043a44be5dccc88f85, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 79927c432e3ce264fa93eee03f4d1e67, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c30fa57c734a4d54fa9354db69e40325, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c9c66679dbe54761967a385bd8138809, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/IO/baseAddress.prefab
+- Assets/Prefabs/IO/ticketRatio.prefab
+- Assets/Prefabs/IO/baseToggle.prefab
+- Assets/Prefabs/IO/baseShow0.prefab
+- Assets/Prefabs/IO/IOCanvas.prefab
+- Assets/Prefabs/IO/baseShow3.prefab
+- Assets/Prefabs/IO/dateTimeSection.prefab
+- Assets/Prefabs/IO/baseButton2.prefab
+- Assets/Prefabs/IO/baseShow4.prefab
+- Assets/Prefabs/IO/IOArrow.prefab
+- Assets/Prefabs/IO/baseButton0.prefab
+- Assets/Prefabs/IO/modDate.prefab
+- Assets/Prefabs/IO/BillCanvas.prefab
+- Assets/Prefabs/IO/baseShow1.prefab
+- Assets/Prefabs/IO/baseShow6.prefab
+- Assets/Prefabs/IO/switchSection.prefab
+- Assets/Prefabs/IO/baseShow2.prefab
+- Assets/Prefabs/IO/baseShow5.prefab
+- Assets/Prefabs/IO/modDate2.prefab
+- Assets/Prefabs/IO/baseSection0.prefab
+- Assets/Prefabs/IO/basePassword.prefab
+- Assets/Prefabs/IO/baseSection1.prefab
+- Assets/Prefabs/IO/baseButton1.prefab
+Dependencies: []
