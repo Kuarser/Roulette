@@ -582,6 +582,9 @@ namespace RouletteDeluxe
             portraitCanvas = canvasObject.GetComponent<Canvas>();
             portraitCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
             portraitCanvas.sortingOrder = 20;
+            // 轮盘台面固定生成在 Display2（Display.displays[1]，与 PopCanvas 同一块副屏），
+            // Editor 与 Player 一致，不再回退主屏。
+            portraitCanvas.targetDisplay = 1;
             CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1080, 1920);

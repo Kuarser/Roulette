@@ -1213,7 +1213,7 @@ public class View : MonoBehaviour
     /// </summary>
     public void SetJackpot(int jackpot)
     {
-        uiMainView.UpdateJackpotText(jackpot);
+        //uiMainView.UpdateJackpotText(jackpot);//轮盘暂时屏蔽
     }
 
     /// <summary>
@@ -1237,23 +1237,23 @@ public class View : MonoBehaviour
         uiMainView.ShowWinScore();//手动刷新分数
 
 
-        uiMainView.UpdateView();
+        //uiMainView.UpdateView();//轮盘暂时屏蔽
 
-        for (int i = 0; i < symbolViewsList.Count; i++)
-        {
-            symbolViewsList[i].SetBet(PlayerMgr.Instance.localPlayer.outState.bets[i]);
-            symbolViewsList[i].SetSymbolView(Model.Instance.totalBets[i]);//显示所有玩家押注
+        // for (int i = 0; i < symbolViewsList.Count; i++)//轮盘暂时屏蔽
+        // {
+        //     symbolViewsList[i].SetBet(PlayerMgr.Instance.localPlayer.outState.bets[i]);
+        //     symbolViewsList[i].SetSymbolView(Model.Instance.totalBets[i]);//显示所有玩家押注
 
-            uiRoadMapView.UpdateBetText(i, PlayerMgr.Instance.localPlayer.outState.bets[i]);
-            uiRoadMapView.UpdateResultWinTotalBet(i, Model.Instance.totalBets[i]);
+        //     uiRoadMapView.UpdateBetText(i, PlayerMgr.Instance.localPlayer.outState.bets[i]);
+        //     uiRoadMapView.UpdateResultWinTotalBet(i, Model.Instance.totalBets[i]);
 
-            if (FSMSystem.Instance.CurrentStateID == StateID.Bet
-                && PlayerMgr.Instance.localPlayer.outState.credit > 0
-                && symbolViewsList[i].isBettingNow)
-                Controller.Instance.PlaySpineAnimation();//播放荷官发筹码押注动画
-        }
+        //     if (FSMSystem.Instance.CurrentStateID == StateID.Bet
+        //         && PlayerMgr.Instance.localPlayer.outState.credit > 0
+        //         && symbolViewsList[i].isBettingNow)
+        //         Controller.Instance.PlaySpineAnimation();//播放荷官发筹码押注动画
+        // }
 
-        uiBankerView.UpdateBankerText();
+        // uiBankerView.UpdateBankerText();//轮盘暂时屏蔽
     }
 
 
