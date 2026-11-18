@@ -32,6 +32,9 @@ public class BetState : FSMState
 
     public override void DoBeforeEntering()
     {
+        // 轮盘模式：押分窗口由轮盘自己管理，不启动宿主倒计时/算法卡流程。
+        if (Model.Instance.rouletteFlow) return;
+
         AddEventListenr();
 
         Controller.Instance.OnGameStart();
@@ -40,7 +43,7 @@ public class BetState : FSMState
 
     public override void DoBeforeLeaving()
     {
-        RemoveEventListenr();
+        if (!Model.Instance.rouletteFlow) RemoveEventListenr();
     }
 
 

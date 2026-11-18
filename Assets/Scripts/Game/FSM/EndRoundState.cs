@@ -21,13 +21,28 @@ public class EndRoundState : FSMState
     public override void DoBeforeEntering()
     {
         Model.Instance.startingNewRound = true;
+
+        // 轮盘模式：轮次收尾由轮盘自己完成，不向算法卡请求结束本轮。
+        if (Model.Instance.rouletteFlow)
+        {
+            MonoMgr.Instance.StartCoroutine(DelayRoulettePrint());
+            return;
+        }
+
         AddEventListener();
         SBoxIdea.BattleEndRound();
     }
 
     public override void DoBeforeLeaving()
     {
-        RemoveEventListener();
+        if (!Model.Instance.rouletteFlow) RemoveEventListener();
+    }
+
+    private IEnumerator DelayRoulettePrint()
+    {
+        yield return new WaitForSeconds(1f);
+        if (FSMSystem.Instance.CurrentStateID != StateID.EndRound) yield break;
+        FSMSystem.Instance.PerformTransition(Transition.Print);
     }
 
     private void OnBattleEndRound(int[] data)

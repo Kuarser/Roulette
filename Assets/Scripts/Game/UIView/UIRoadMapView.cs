@@ -51,6 +51,32 @@ public class UIRoadMapView : MonoBehaviour
 
     private void InitView()
     {
+        // 纯轮盘机台：UICanvas 子物体已清除，只保留 PopCanvas 上的路单说明弹窗。
+        if (!View.OriginalBaccaratUiPresent)
+        {
+            var popOnly = GameObject.Find("PopCanvas").transform;
+            if (popOnly != null)
+            {
+                var roadPanel = popOnly.Find("helpPanelRoad");
+                if (roadPanel != null)
+                {
+                    helpPanelRoad = roadPanel.gameObject;
+                    var closeBtn = helpPanelRoad.transform.Find("closeBtn");
+                    if (closeBtn != null)
+                    {
+                        helpCloseBtn = closeBtn.GetComponent<Button>();
+                        helpCloseBtn.onClick.RemoveAllListeners();
+                        helpCloseBtn.onClick.AddListener(() =>
+                        {
+                            ChangeHelpPanelActive();
+                            AudioManager.Instance.PlaySoundEff("buttonClick");
+                        });
+                    }
+                }
+            }
+            return;
+        }
+
         var UICanvas = GameObject.Find("UICanvas").transform;
         var popCanvas = GameObject.Find("PopCanvas").transform;
 
@@ -208,6 +234,7 @@ public class UIRoadMapView : MonoBehaviour
 
     public void UpdateRoundAndGameText()//更新轮,局
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         recordViewPanelRoundText.text = Model.Instance.curRound.ToString();//轮数
         recordViewPanelGameText.text = Model.Instance.curGame.ToString();//局数
     }
@@ -229,6 +256,7 @@ public class UIRoadMapView : MonoBehaviour
 
     public void ResetPredict()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         for (int i = 0; i < redList.Count; i++)
             redList[i].gameObject.SetActive(false);
         for (int i = 0; i < blueList.Count; i++)
@@ -237,33 +265,37 @@ public class UIRoadMapView : MonoBehaviour
 
     public void ShowPredict()//本局预测结果
     {
-        for (int i = 0; i < recordDaYanView_SelfAddItems.Count; i++)
+        // 纯轮盘机台：预测图标挂在原九门界面上，仍保留网络同步。
+        if (View.OriginalBaccaratUiPresent)
         {
-            int temp = Model.Instance.lastValueYuce[i];
-            int temp2 = -1;
-            if (temp != -1)
-                temp2 = temp == 0 ? 1 : 0;//输入形参:1:庄;0:闲;//结果:0:庄,1:闲,-1:无结果
+            for (int i = 0; i < recordDaYanView_SelfAddItems.Count; i++)
+            {
+                int temp = Model.Instance.lastValueYuce[i];
+                int temp2 = -1;
+                if (temp != -1)
+                    temp2 = temp == 0 ? 1 : 0;//输入形参:1:庄;0:闲;//结果:0:庄,1:闲,-1:无结果
 
-            redList[i].sprite = Resources.Load<Sprite>($"NextTip/" + i + "_" + temp2);
-            blueList[i].sprite = Resources.Load<Sprite>($"NextTip/" + i + "_" + temp);
-            if (redList[i].sprite != null)
-            {
-                redList[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                redList[i].gameObject.SetActive(false);
-            }
-            if (blueList[i].sprite != null)
-            {
-                blueList[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                blueList[i].gameObject.SetActive(false);
+                redList[i].sprite = Resources.Load<Sprite>($"NextTip/" + i + "_" + temp2);
+                blueList[i].sprite = Resources.Load<Sprite>($"NextTip/" + i + "_" + temp);
+                if (redList[i].sprite != null)
+                {
+                    redList[i].gameObject.SetActive(true);
+                }
+                else
+                {
+                    redList[i].gameObject.SetActive(false);
+                }
+                if (blueList[i].sprite != null)
+                {
+                    blueList[i].gameObject.SetActive(true);
+                }
+                else
+                {
+                    blueList[i].gameObject.SetActive(false);
+                }
             }
         }
-        
+
         MsgInfo msgInfo = new MsgInfo
         {
             cmd = (int)S2C_CMD.S2C_UpdateHistoryData6,
@@ -288,6 +320,7 @@ public class UIRoadMapView : MonoBehaviour
 
     public void SetRecords(List<List<RecordItemView>> daluRecords)
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         if (Model.Instance.records == null) return;
         if (Model.Instance.records.Count <= 0)
         {
@@ -304,6 +337,7 @@ public class UIRoadMapView : MonoBehaviour
 
     public void UpdateRecords()//arg:List<List<RecordItemView>> daluRecords
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         //recordListView_SelfAddItem.SetRecords(Model.Instance.records);
         //recordViewPanelRecordListRect.transform.GetComponent<ScrollSnapAlign>().RefreshPos(recordListView_SelfAddItem.LastCol2);
         
@@ -316,6 +350,7 @@ public class UIRoadMapView : MonoBehaviour
 
     public void RefreshOnNewRound()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         recordListView_SelfAddItem.ResetRecords();
         for (int i = 0; i < recordDaYanView_SelfAddItems.Count; i++)
             recordDaYanView_SelfAddItems[i].ResetRecord();
@@ -341,21 +376,25 @@ public class UIRoadMapView : MonoBehaviour
     public void ShowDaLu()
     {
         //大路用 records 来 显示,不用 BigRoadList ,因为有小游戏判断,钻石显示判断
+        if (!View.OriginalBaccaratUiPresent) return;
         recordListView_SelfAddItem.SetRecords(Model.Instance.records);
     }
 
     public void ShowDaYanLu()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         recordDaYanView_SelfAddItems[0].SetRecord(Model.Instance.bigEyeRoadList);
     }
 
     public void ShowXiaoLu()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         recordDaYanView_SelfAddItems[1].SetRecord(Model.Instance.smallRoadList);
     }
 
     public void ShowXiaoQiangLu()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         recordDaYanView_SelfAddItems[2].SetRecord(Model.Instance.dragonRoadList);
     }
 

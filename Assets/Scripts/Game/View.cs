@@ -100,6 +100,24 @@ public class View : MonoBehaviour
 
     private bool isFirstRefreshText = true;//是否是第一次刷新文本,只使用一次
     private MacInfoView macInfoView;
+
+    // 原九门（Baccarat）界面是否在位：UICanvas 下 Center 节点缺失即视为已清除。
+    // 纯轮盘机台会删除 UICanvas 下全部子物体，清除后原九门界面逻辑全部短路，
+    // 只保留轮盘（PopCanvas / RouletteDeluxe）与设置/账单等非游戏功能。
+    // 懒探测：UIView 组件的 Awake 可能早于 View.Awake，因此不能依赖初始化赋值顺序。
+    private static bool? originalBaccaratUiPresentCache;
+    public static bool OriginalBaccaratUiPresent
+    {
+        get
+        {
+            if (originalBaccaratUiPresentCache.HasValue) return originalBaccaratUiPresentCache.Value;
+            GameObject uiCanvas = GameObject.Find("UICanvas");
+            bool present = uiCanvas != null && uiCanvas.transform.Find("Center") != null;
+            originalBaccaratUiPresentCache = present;
+            Debug.Log("ROULETTE_ORIGINAL_UI_PRESENT: " + present);
+            return present;
+        }
+    }
     #endregion
 
 
@@ -239,6 +257,8 @@ public class View : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
+            // 纯轮盘机台没有 UICanvas 界面，调试用的缩放打印跳过。
+            if (!OriginalBaccaratUiPresent) return;
             var UICanvasS = transform.Find("UICanvas").GetComponent<CanvasScaler>();
             Debug.LogError(
                 $"UI Scale Mode: {UICanvasS.uiScaleMode}\n" +
@@ -286,51 +306,57 @@ public class View : MonoBehaviour
 
         var UICanvas = transform.Find("UICanvas");
 
-        poker3 = UICanvas.Find("Center/AllCardDeck/Poker3_1").GetComponent<Animator>();//卡牌发牌动画
-        pokerTurn = UICanvas.Find("Center/AllCardDeck/Poker3_1/Item/Poker").GetComponent<Animator>();//卡牌翻牌展示动画
-        poker3_2 = UICanvas.Find("Center/AllCardDeck/Poker3_2").GetComponent<Animator>();
-        pokerTurn_2 = UICanvas.Find("Center/AllCardDeck/Poker3_2/Item/Poker").GetComponent<Animator>();
-        poker3_3 = UICanvas.Find("Center/AllCardDeck/Poker3_3").GetComponent<Animator>();
-        pokerTurn_3 = UICanvas.Find("Center/AllCardDeck/Poker3_3/Item/Poker").GetComponent<Animator>();
-        poker3_4 = UICanvas.Find("Center/AllCardDeck/Poker3_4").GetComponent<Animator>();
-        pokerTurn_4 = UICanvas.Find("Center/AllCardDeck/Poker3_4/Item/Poker").GetComponent<Animator>();
-        poker3_5 = UICanvas.Find("Center/AllCardDeck/Poker3_5").GetComponent<Animator>();
-        pokerTurn_5 = UICanvas.Find("Center/AllCardDeck/Poker3_5/Item/Poker").GetComponent<Animator>();
-        poker3_6 = UICanvas.Find("Center/AllCardDeck/Poker3_6").GetComponent<Animator>();
-        pokerTurn_6 = UICanvas.Find("Center/AllCardDeck/Poker3_6/Item/Poker").GetComponent<Animator>();
-
-        CardDeckRemainCards = UICanvas.Find("Center/AllCardDeck/CardDeck/RemainCardsNumber").GetComponent<Text>();
-        CardDeckRemainCards.text = "";
-
-        // P3: 隐藏百家乐卡片视觉（只关 Renderer/Graphic，保留 Animator/协程/网络时序）
-        HideCardVisuals(UICanvas.Find("Center/AllCardDeck"));
-
-        // P4: 隐藏路单/抢庄（子节点级；保留组件/对象与方法调用）
-        HideObsoleteBaccaratUi(UICanvas);
-
-        var symbolList = UICanvas.Find("Center/SymbolList");
-        symbolListObj = symbolList.gameObject;
-        for (int i = 0; i < symbolList.childCount; i++)//Baccarat※ 需要九个押分区
+        // 纯轮盘机台会删除 UICanvas 下全部子物体，原九门界面逻辑在这里整体短路。
+        if (OriginalBaccaratUiPresent && UICanvas != null)
         {
-            var symbol = symbolList.GetChild(i).GetComponent<SymbolView>();
-            symbol.index = i;
-            symbolViewsList.Add(symbol);//中奖视图
+            poker3 = UICanvas.Find("Center/AllCardDeck/Poker3_1").GetComponent<Animator>();//卡牌发牌动画
+            pokerTurn = UICanvas.Find("Center/AllCardDeck/Poker3_1/Item/Poker").GetComponent<Animator>();//卡牌翻牌展示动画
+            poker3_2 = UICanvas.Find("Center/AllCardDeck/Poker3_2").GetComponent<Animator>();
+            pokerTurn_2 = UICanvas.Find("Center/AllCardDeck/Poker3_2/Item/Poker").GetComponent<Animator>();
+            poker3_3 = UICanvas.Find("Center/AllCardDeck/Poker3_3").GetComponent<Animator>();
+            pokerTurn_3 = UICanvas.Find("Center/AllCardDeck/Poker3_3/Item/Poker").GetComponent<Animator>();
+            poker3_4 = UICanvas.Find("Center/AllCardDeck/Poker3_4").GetComponent<Animator>();
+            pokerTurn_4 = UICanvas.Find("Center/AllCardDeck/Poker3_4/Item/Poker").GetComponent<Animator>();
+            poker3_5 = UICanvas.Find("Center/AllCardDeck/Poker3_5").GetComponent<Animator>();
+            pokerTurn_5 = UICanvas.Find("Center/AllCardDeck/Poker3_5/Item/Poker").GetComponent<Animator>();
+            poker3_6 = UICanvas.Find("Center/AllCardDeck/Poker3_6").GetComponent<Animator>();
+            pokerTurn_6 = UICanvas.Find("Center/AllCardDeck/Poker3_6/Item/Poker").GetComponent<Animator>();
+
+            CardDeckRemainCards = UICanvas.Find("Center/AllCardDeck/CardDeck/RemainCardsNumber").GetComponent<Text>();
+            CardDeckRemainCards.text = "";
+
+            // P3: 隐藏百家乐卡片视觉（只关 Renderer/Graphic，保留 Animator/协程/网络时序）
+            HideCardVisuals(UICanvas.Find("Center/AllCardDeck"));
+
+            // P4: 隐藏路单/抢庄（子节点级；保留组件/对象与方法调用）
+            HideObsoleteBaccaratUi(UICanvas);
+
+            var symbolList = UICanvas.Find("Center/SymbolList");
+            symbolListObj = symbolList.gameObject;
+            for (int i = 0; i < symbolList.childCount; i++)//Baccarat※ 需要九个押分区
+            {
+                var symbol = symbolList.GetChild(i).GetComponent<SymbolView>();
+                symbol.index = i;
+                symbolViewsList.Add(symbol);//中奖视图
+            }
+            //symbolViewsListParent = symbolList.GetComponent<CanvasGroup>();
+
+            var countParent = UICanvas.Find("Top/Right/BG/betCountInfo");
+            for (int i = 0; i < countParent.childCount; i++)
+            {
+                winCountTexts.Add(countParent.GetChild(i).GetComponent<Text>());//本轮押注中奖次数文本
+                winCountTexts[i].text = "0";
+            }
+
+            //显示betSwitch
+            UpdateBetSwitch();
+
+            //spine 动画
+            target = transform.Find("UICanvas/Top/Center/heguangdonghua").gameObject;
+
+            netJPIcon = UICanvas.Find("Bottom/netJackpotIcon").GetComponent<Image>();
+            netJPIcon.material = new Material(Shader.Find("UI/Unlit/ImageGray"));
         }
-        //symbolViewsListParent = symbolList.GetComponent<CanvasGroup>();
-
-        var countParent = UICanvas.Find("Top/Right/BG/betCountInfo");
-        for (int i = 0; i < countParent.childCount; i++)
-        {
-            winCountTexts.Add(countParent.GetChild(i).GetComponent<Text>());//本轮押注中奖次数文本
-            winCountTexts[i].text = "0";
-        }
-
-        //显示betSwitch
-        UpdateBetSwitch();
-
-        //spine 动画
-        target = transform.Find("UICanvas/Top/Center/heguangdonghua").gameObject;
-
 
     #region 小游戏的资源显示,一开始可以先全部注释,先写好主游戏再说
         var popCanvas = transform.Find("PopCanvas");
@@ -338,7 +364,10 @@ public class View : MonoBehaviour
         // P1: 装饰性轮盘台面（display 1 / PopCanvas），只读展示，不参与下注/结算
         var rouletteGo = new GameObject("RouletteDeluxeGame");
         rouletteGo.transform.SetParent(transform, false);
-        rouletteGo.AddComponent<RouletteDeluxe.RouletteGame>();
+        var rouletteGame = rouletteGo.AddComponent<RouletteDeluxe.RouletteGame>();
+        RouletteFlowBridge.Attach(rouletteGame);
+        if (RouletteFsmLoopSmoke.Requested)
+            rouletteGo.AddComponent<RouletteFsmLoopSmoke>();
 
 
         var cardListParent = popCanvas.Find("cardList");
@@ -359,9 +388,6 @@ public class View : MonoBehaviour
     #endregion
 
     #region netJackpot资源显示
-        netJPIcon = UICanvas.Find("Bottom/netJackpotIcon").GetComponent<Image>();
-        netJPIcon.material = new Material(Shader.Find("UI/Unlit/ImageGray"));
-
         var helpDialog = popCanvas.Find("helpPanel").gameObject;//帮助视图显示
         helpDialog.SetActive(false);
         nomalHelpContentObj = helpDialog.transform.Find("BG").gameObject;
@@ -436,6 +462,7 @@ public class View : MonoBehaviour
 
     private void UpdateCardRemainText(int count)
     {
+        if (!OriginalBaccaratUiPresent) return;
         CardDeckRemainCards.text = count.ToString();//剩余卡牌数量
     }
 
@@ -470,18 +497,22 @@ public class View : MonoBehaviour
         mingPaiObj.gameObject.SetActive(false);//隐藏明牌logo动画
         fireworkObj.gameObject.SetActive(false);//隐藏彩金特效
 
-        poker3.gameObject.SetActive(false);//卡牌动画隐藏
-        poker3_2.gameObject.SetActive(false);
-        poker3_3.gameObject.SetActive(false);
-        poker3_4.gameObject.SetActive(false);
-        poker3_5.gameObject.SetActive(false);
-        poker3_6.gameObject.SetActive(false);
-        pokerTurn.gameObject.SetActive(false);
-        pokerTurn_2.gameObject.SetActive(false);
-        pokerTurn_3.gameObject.SetActive(false);
-        pokerTurn_4.gameObject.SetActive(false);
-        pokerTurn_5.gameObject.SetActive(false);
-        pokerTurn_6.gameObject.SetActive(false);
+        // 卡牌动画属于原九门界面，纯轮盘机台下不存在。
+        if (OriginalBaccaratUiPresent)
+        {
+            poker3.gameObject.SetActive(false);//卡牌动画隐藏
+            poker3_2.gameObject.SetActive(false);
+            poker3_3.gameObject.SetActive(false);
+            poker3_4.gameObject.SetActive(false);
+            poker3_5.gameObject.SetActive(false);
+            poker3_6.gameObject.SetActive(false);
+            pokerTurn.gameObject.SetActive(false);
+            pokerTurn_2.gameObject.SetActive(false);
+            pokerTurn_3.gameObject.SetActive(false);
+            pokerTurn_4.gameObject.SetActive(false);
+            pokerTurn_5.gameObject.SetActive(false);
+            pokerTurn_6.gameObject.SetActive(false);
+        }
 
         SetRecords();
     }
@@ -504,6 +535,16 @@ public class View : MonoBehaviour
     {
         if (FSMSystem.Instance.CurrentStateID == StateID.Error)
             FSMSystem.Instance.PerformTransition(Transition.Setting);
+        else if (Model.Instance.rouletteFlow)
+        {
+            // 轮盘模式不经过打单环节，任何时刻都只登记设置请求，
+            // 由 RouletteGame.Update 在轮盘空闲时消费后 ForceState(Setting)。
+            CloseBillCanvas();
+            Model.Instance.wait4Setting = true;
+            Model.Instance.RemoveErrorCode(0, false);
+            PopTips.Instance.ShowSystemTips($"About to enter settings", -1);
+            Debug.Log("ROULETTE_FSM_FLOW: setting requested, waiting for roulette idle");
+        }
         else
         {
             if (FSMSystem.Instance.CurrentStateID == StateID.Print && Model.Instance.PrinterError())
@@ -611,6 +652,7 @@ public class View : MonoBehaviour
     /// </summary>
     private IEnumerator PlayPokerCard(Animator poker, Animator turn, PokerData data, PokerPlayOptions options)
     {
+        if (!OriginalBaccaratUiPresent) yield break;
         //---- 发牌物体(poker)+翻牌物体(turn) 重置逻辑 ----
         if (options.needReset)
         {
@@ -652,6 +694,7 @@ public class View : MonoBehaviour
 
     private IEnumerator DealPoker(RecordStruct record)//开始发扑克牌携程:完整流程唯一调用点
     {
+        if (!OriginalBaccaratUiPresent) yield break;
         //明牌局(小游戏6):不走常规发牌,发牌+翻牌统一由 ShowPokerCard 按张数同时处理
         if (record.luckyId == 6)
             yield break;
@@ -785,6 +828,7 @@ public class View : MonoBehaviour
 
     private IEnumerator PokerAniTest(RecordStruct recordStruct)
     {
+        if (!OriginalBaccaratUiPresent) yield break;
         //开牌顺序: 先掀开闲家两张 → 再掀开庄家两张 → 闲家补牌(需要时)掀开第三张 → 庄家补牌(需要时)掀开第三张
         //补牌与否由后端 cardnum 决定: [0]庄家张数 [1]闲家张数, 3=补第三张
         int bankerCount = recordStruct.cardnum != null && recordStruct.cardnum.Length > 0 ? recordStruct.cardnum[0] : 2;
@@ -826,6 +870,7 @@ public class View : MonoBehaviour
     /// </summary>
     private IEnumerator DealAndReveal(Animator poker, Animator turn, RecordStruct record, int valueIdx)
     {
+        if (!OriginalBaccaratUiPresent) yield break;
         PokerData data = valueIdx < record.value.Length ? Model.Instance.GetPokerData(record.value[valueIdx]) : new PokerData();
         PokerPlayOptions options = new PokerPlayOptions
         {
@@ -846,6 +891,7 @@ public class View : MonoBehaviour
 
     private IEnumerator PlaySlotRevealAnimation(Animator turnAnim, bool isRd = false)
     {
+        if (!OriginalBaccaratUiPresent) yield break;
         // turnAnim.SetFloat("speed", 0.1f);
         // turnAnim.SetBool("show", true);
         // yield return new WaitForSeconds(0.35f);
@@ -943,6 +989,9 @@ public class View : MonoBehaviour
 
     public void CountDownStart()
     {
+        // 纯轮盘机台：原九门倒计时/发牌都不播，轮盘自己管押分窗口。
+        if (!OriginalBaccaratUiPresent) return;
+
         Model.Instance.curCountDown = IOCanvasModel.Instance.CfgData.CountDown;//实际
 
         if (Application.isEditor)//编辑器测试用
@@ -952,13 +1001,13 @@ public class View : MonoBehaviour
         uiRoadMapView.ShowPredict();//显示预测的本局结果
 
         UpdateCardRemainText(--Model.Instance.RemainCards);//剩余卡牌数文本更新
-
         StartCoroutine(CountDownEnumerator());
         StartCoroutine(DealPoker(Model.Instance.curRecord));
 
     }
     private IEnumerator CountDownEnumerator()//开始倒计时携程
     {
+        if (!OriginalBaccaratUiPresent) yield break;
         while (Model.Instance.curCountDown > 0)
         {
             yield return new WaitForSeconds(1f);//1f加速到0.2f※打包恢复dabao
@@ -977,6 +1026,8 @@ public class View : MonoBehaviour
 
     public void HideSymbolView()
     {
+        // 纯轮盘机台没有九门押注闪光，同时 roadMap 也不在位。
+        if (!OriginalBaccaratUiPresent) return;
         for (int i = 0; i < symbolViewsList.Count; i++)
         {
             symbolViewsList[i].HideLightIcon();
@@ -989,6 +1040,8 @@ public class View : MonoBehaviour
     /// </summary>
     public void ResetPokerCard()
     {
+        // 纯轮盘机台没有卡牌位，动画重置无事可做。
+        if (!OriginalBaccaratUiPresent) return;
         //重置动画
         Debug.LogError("ResetPokerCard");
         pokerTurn.SetBool("show", false);
@@ -1022,6 +1075,9 @@ public class View : MonoBehaviour
     /// </summary>
     public IEnumerator ShowPokerCard(RecordStruct recordStruct)
     {
+        // 纯轮盘机台没有卡牌位，没有发牌动画可播。
+        if (!OriginalBaccaratUiPresent) yield break;
+
         int bankerCount = recordStruct.cardnum != null && recordStruct.cardnum.Length > 0 ? recordStruct.cardnum[0] : 2;
         int playerCount = recordStruct.cardnum != null && recordStruct.cardnum.Length > 1 ? recordStruct.cardnum[1] : 2;
 
@@ -1111,6 +1167,8 @@ public class View : MonoBehaviour
 
     public void ShowBetCoinViewActive()//选择硬币界面显示,
     {
+        // 押注筹码属于原九门界面。
+        if (!OriginalBaccaratUiPresent) return;
         if (betCoinViews == null || betCoinViews.Count <= 0)
         {
             Debug.LogError("初始化高亮放大显示 第一个硬币失败!");
@@ -1124,10 +1182,13 @@ public class View : MonoBehaviour
     }
     public void ChangeSymbolListObjActive()
     {
+        if (!OriginalBaccaratUiPresent) return;
         symbolListObj.SetActive(!symbolListObj.activeSelf);
     }
     public void UpdateRoundAndGameText()//因为原来的用了字体,所以"R:"没有对应的,所以不显示,所以可以写
     {
+        // 纯轮盘机台没有轮局文本。
+        if (!OriginalBaccaratUiPresent) return;
         uiMainView.UpdateRoundAndGameText();
         uiRoadMapView.UpdateRoundAndGameText();
     }
@@ -1137,6 +1198,18 @@ public class View : MonoBehaviour
     /// </summary>
     public void SetRecord()
     {
+        if (!OriginalBaccaratUiPresent)
+        {
+            // 纯轮盘机台：只维护统计计数，不碰任何原九门界面。
+            for (int i = 0; i < Model.Instance.records.Count; i++)
+            {
+                bool[] doorWins = Model.CalcWinDoors(Model.Instance.records[i]);
+                for (int j = 0; j < doorWins.Length; j++)
+                    if (doorWins[j]) Model.Instance.recordTypeCounts[j]++;
+            }
+            return;
+        }
+
         uiRecordView.ShowSetRecordBySelfAddItem();
         for (int i = 0; i < Model.Instance.records.Count; i++)
         {
@@ -1161,6 +1234,7 @@ public class View : MonoBehaviour
     //第一次设置record 露珠界面
     public void SetRecords()
     {
+        if (!OriginalBaccaratUiPresent) return;
         if (Model.Instance.records == null || Model.Instance.records.Count == 0) return;
         uiRecordView.SetRecordView();
     }
@@ -1168,6 +1242,7 @@ public class View : MonoBehaviour
     //刷新record 露珠界面
     public void UpdateRecords()
     {
+        if (!OriginalBaccaratUiPresent) return;
         uiRecordView.UpdateRecordView();
 
         Model.Instance.SetAllRoadData();
@@ -1184,11 +1259,13 @@ public class View : MonoBehaviour
         for (int i = 0; i < Model.Instance.recordTypeCounts.Length; i++)
             Model.Instance.recordTypeCounts[i] = 0;
 
-        uiRecordView.ResetRecordView();
-
-        winCountTexts.ForEach(text => text.text = "0");
-
-        uiRoadMapView.RefreshOnNewRound();
+        // 界面刷新只在原九门界面在位时执行：纯轮盘机台下这些组件字段为 null。
+        if (OriginalBaccaratUiPresent)
+        {
+            uiRecordView.ResetRecordView();
+            winCountTexts.ForEach(text => text.text = "0");
+            uiRoadMapView.RefreshOnNewRound();
+        }
 
         Model.Instance.records.Clear();
 
@@ -1204,6 +1281,7 @@ public class View : MonoBehaviour
 
     public void SetLuckyTips(string str, float timer = 3f)
     {
+        if (!OriginalBaccaratUiPresent) return;
         uiMainView.SetLuckyTips(str, timer);
 
     }
@@ -1221,6 +1299,7 @@ public class View : MonoBehaviour
     /// </summary>
     public void UpdateAllBets()
     {
+        if (!OriginalBaccaratUiPresent) return;
         for (int i = 0; i < symbolViewsList.Count; i++)//symbolViewsList.Count
         {
             symbolViewsList[i].SetAllBet(Model.Instance.totalBets[i]);
@@ -1233,6 +1312,7 @@ public class View : MonoBehaviour
     /// </summary>
     public void RefreshPlayerInfo()
     {
+        if (!OriginalBaccaratUiPresent) return;
         FirstRefreshText();
         uiMainView.ShowWinScore();//手动刷新分数
 
@@ -1377,7 +1457,9 @@ public class View : MonoBehaviour
     public void InitIOCanvas()
     {
         CloseBillCanvas();
-        if (!Model.Instance.wait4Print
+        // 轮盘模式不参与算法卡本轮协议，进去设置时不要请求结束本轮。
+        if (!Model.Instance.rouletteFlow
+            && !Model.Instance.wait4Print
             && !Model.Instance.checking)
             SBoxIdea.BattleEndRound();
         Model.Instance.wait4Setting = false;
@@ -1400,6 +1482,7 @@ public class View : MonoBehaviour
     }
     public void RefreshIOCanvas()
     {
+        if (!OriginalBaccaratUiPresent) return;
         uiMainView.UpdateView();
     }
 
@@ -1435,12 +1518,14 @@ public class View : MonoBehaviour
 
     public void ChangeHelpPanelActive()
     {
+        if (!OriginalBaccaratUiPresent) return;
         uiHelpView.ChangeHelpPanelActive();
 
     }
     
     public void ResetHistoryRecord()
     {
+        if (!OriginalBaccaratUiPresent) return;
         uiHistoryView.ResetHistoryRecord();
     }
 
@@ -1451,6 +1536,7 @@ public class View : MonoBehaviour
 
     public void PlaySpineAnim2(int index)
     {
+        if (!OriginalBaccaratUiPresent) return;
         if (isDealing) return;//发牌期间荷官动画不可被其他动作(发筹码等)打断
         if (isPlayOver)
         {
@@ -1509,6 +1595,7 @@ public class View : MonoBehaviour
 
     public void UpdateBetSwitch()
     {
+        if (!OriginalBaccaratUiPresent) return;
         var UICanvas = transform.Find("UICanvas");
         var betCoinParent = UICanvas.Find("Bottom/Center/BetList");
         for (int i = 0; i < betCoinParent.childCount; i++)
@@ -1525,6 +1612,8 @@ public class View : MonoBehaviour
     public void SetNetJPIcon()
     {
         Model.Instance.netJackpotState = IOCanvasModel.Instance.jackpotCfg.jackpotSwitch == (int)IOJackpotSwitch.JackpotSwitchOn ? (NetMgr.Instance.CurNetStatus == NET_STATUS.NET_STATUS_CONNECTED ? 2 : 1) : 0;
+        // 联网彩金图标挂在原九门界面底部，纯轮盘机台下不存在。
+        if (!OriginalBaccaratUiPresent || netJPIcon == null) return;
         netJPIcon.gameObject.SetActive(Model.Instance.netJackpotState > 0);
         int setGray = Model.Instance.netJackpotState == 2 ? 0 : 1;
         netJPIcon.material.SetFloat("_SetGray", setGray);
@@ -1651,6 +1740,8 @@ public class View : MonoBehaviour
     //特殊结束
     private IEnumerator ShowResultSpecialFinishCoroutine(RecordStruct recordStruct)
     {
+        // 纯轮盘机台不走九门开奖流程。
+        if (!OriginalBaccaratUiPresent) yield break;
         ShowResultFinish();
 
 
@@ -1739,17 +1830,20 @@ public class View : MonoBehaviour
 
     public void ChangeCountDownState4Controller(CountDownState curState)
     {
-        //正在开牌
+        if (!OriginalBaccaratUiPresent) return;
         uiMainView.ChangeCountDownState(curState);
     }
 
     public IEnumerator PokerAnimation4Controller(RecordStruct recordStruct)
     {
+        // 纯轮盘机台没有卡牌动画。
+        if (!OriginalBaccaratUiPresent) yield break;
         yield return PokerAniTest(recordStruct);
     }
 
     public void RefreshBanker()
     {
+        if (!OriginalBaccaratUiPresent) return;
         uiBankerView.RefreshBancker();
     }
 
@@ -1766,6 +1860,7 @@ public class View : MonoBehaviour
 
     public void ShowLuckySeatAboutAllWin(int luckyId, int resultIndex)
     {
+        if (!OriginalBaccaratUiPresent) return;
         if (luckyId == 7)
         {
             //大满贯
@@ -1786,7 +1881,8 @@ public class View : MonoBehaviour
 
     public void ShowResultFinish()
     {
-        mingPaiObj.gameObject.SetActive(false);//隐藏明牌logo
+        // 明牌 logo 属于 PopCanvas，纯轮盘机台下仍在位，需保留隐藏动作。
+        if (mingPaiObj != null) mingPaiObj.gameObject.SetActive(false);//隐藏明牌logo
         setBidBankerBtngrey(false);//重置庄家按钮为可用状态
         Model.Instance.canBidBanker = true;
         SandboxController.Instance.TurnOnEnterLight();//可抢庄,抢庄键灯亮
@@ -1796,6 +1892,7 @@ public class View : MonoBehaviour
 
     public void ShowResultWin(int resultIndex)
     {
+        if (!OriginalBaccaratUiPresent) return;
         symbolViewsList[resultIndex - 1].ShowLightIcon();//显示结果中奖闪烁
                                                          //symbolViewsList2[resultIndex - 1].ShowLightIcon();//显示结果中奖闪烁
         uiRoadMapView.ShowResultWin(resultIndex - 1);
@@ -1803,6 +1900,7 @@ public class View : MonoBehaviour
 
     public void HideResultWin(int result)
     {
+        if (!OriginalBaccaratUiPresent) return;
         symbolViewsList[result - 1].HideLightIcon();
         uiRoadMapView.HideResultWin(result - 1);
 
@@ -1822,11 +1920,14 @@ public class View : MonoBehaviour
 
     public float GetPokerTurnAnimationTime()
     {
+        // 纯轮盘机台没有翻牌动画，返回 0 让调用方的等待直接跳过。
+        if (!OriginalBaccaratUiPresent || pokerTurn == null) return 0f;
         return pokerTurn.GetCurrentAnimatorStateInfo(0).length;
     }
 
     public void RefreshAllRecords()
     {
+        if (!OriginalBaccaratUiPresent) return;
         //主界面
         uiRecordView.ShowDaLu();
         uiRecordView.ShowZhuPanLu();
@@ -1841,6 +1942,7 @@ public class View : MonoBehaviour
 
     public void ShowTypeCount()
     {
+        if (!OriginalBaccaratUiPresent) return;
         for (int i = 0; i < winCountTexts.Count; i++)
         {
             //按理说,他们是存储同一种数据,所以应该是同样的list个数,可以在一个循环里
@@ -1851,6 +1953,8 @@ public class View : MonoBehaviour
     //正常结束
     private IEnumerator ShowResultCoroutine(RecordStruct recordStruct)
     {
+        // 纯轮盘机台不走九门开奖流程。
+        if (!OriginalBaccaratUiPresent) yield break;
         Debug.LogError("ShowResultCoroutine");
         ChangeCountDownState4Controller(CountDownState.Dealing);
 
@@ -1954,6 +2058,8 @@ public class View : MonoBehaviour
     //结束本局游戏,根据条件转换状态
     private void EndGameChangeState()
     {
+        // 轮盘模式：原九门开奖结束不再推进 FSM，状态推进由 RouletteFlowBridge 负责。
+        if (Model.Instance.rouletteFlow) return;
         if (Model.Instance.wait4Setting)
             FSMSystem.Instance.PerformTransition(Transition.Setting);
         else
@@ -1972,6 +2078,7 @@ public class View : MonoBehaviour
     }
     public void setBidBankerBtngrey(bool isGrey)
     {
+        if (!OriginalBaccaratUiPresent) return;
         uiBankerView.setBidBankerBtngrey(isGrey);
     }
     public TotalDataStruct SaveRecordSnapShot(Player player)//写在这里是因为这个函数需要调用UI数据,所以放在View里,如果放在Model里就不好调用UI数据- kuarser
@@ -2023,7 +2130,9 @@ public class View : MonoBehaviour
             bankerDataStruct = bankerDataStruct,
             recordStruct = Model.Instance.curRecord,
             playerData = playerData,
-            jackpotValue = ParseIntSafe(uiMainView.jackpotText.text),
+            // 纯轮盘机台没有彩金文本，历史快照里的彩金值记为 0。
+            jackpotValue = OriginalBaccaratUiPresent && uiMainView != null && uiMainView.jackpotText != null
+                ? ParseIntSafe(uiMainView.jackpotText.text) : 0,
         };
         return totalDataStruct;
     }

@@ -92,6 +92,7 @@ public class SymbolView : MonoBehaviour
     private void OnPointerEnter()
     {
         if (Model.Instance.waitSelectCard) return;
+        if (Model.Instance.rouletteFlow) return; // 轮盘模式下 9 门不参与押分
         if (FSMSystem.Instance.CurrentStateID != StateID.Bet) return;
         int inState = 0;
         switch (index)//鱼种类,4个卡牌就隐藏最后一个case,5个就不隐藏 Baccarat※增加九个押分区

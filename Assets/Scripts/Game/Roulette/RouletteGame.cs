@@ -885,6 +885,11 @@ namespace RouletteDeluxe
         private void Update()
         {
             if (pcAutoPlayStorageFaulted) return;
+            // 设置请求每帧尝试消费：只要轮盘不在运行中，就立即进入后台设置。
+            if (Model.Instance.rouletteFlow &&
+                RouletteFlowBridge.Instance != null &&
+                RouletteFlowBridge.Instance.TryEnterSetting())
+                return;
             if (!ServicePcSasHostMessagesV1()) return;
             // Native label timers are dispatched even while their sprites
             // are hidden, including History and operator overlay service.
@@ -1463,6 +1468,9 @@ namespace RouletteDeluxe
                 StartFooterMovie();
                 status = "Spinning...";
                 ArmSourceRoundAfterCommit();
+                // 必须在本局已经进入 Wheel 阶段之后发布，否则宿主看到的仍是
+                // 尚未收尾的上一个阶段。
+                RaiseFlowSpinCommitted();
                 StartCoroutine(SpinVisual(pocket));
             }
             catch (Exception error)
@@ -1609,6 +1617,7 @@ namespace RouletteDeluxe
 
         private IEnumerator AutoLoop()
         {
+            if (Model.Instance.rouletteFlow) { autoRoutine = null; yield break; }
             // The cabinet receives the AutoPlay toggle in an input callback,
             // then checks funds when RunLoop dispatches state 4.
             yield return null;
@@ -1926,6 +1935,8 @@ namespace RouletteDeluxe
         private void ToggleAuto()
         {
             if (PcGameOrdinaryInputBlocked) return;
+            // 轮盘流程模式下由宿主 FSM 推进，轮盘自带 AutoPlay 会绕过 FSM。
+            if (Model.Instance.rouletteFlow) return;
             long now = System.Diagnostics.Stopwatch.GetTimestamp();
             bool leavingAutoResultWait = autoplay && !spinning &&
                 !winRackActive && session != null &&

@@ -500,6 +500,9 @@ namespace RouletteDeluxe
             sourceDoubleOfferChoice = SourceDoubleOfferChoice.None;
             configuredAutoPlayFinishPending = false;
             ++sourceRoundEndCount;
+            RaiseFlowRoundClosed();
+            // Idle 交接仍由 ServiceConfiguredAutoPlay 完成（idleEntry -> Complete），
+            // 否则 LifecycleBlocksPlayerInput 会让押分窗口无法重开。
             configuredAutoPlayCheckPending = true;
             Debug.Log("ROULETTE_SOURCE_STATE_END: count=" + sourceRoundEndCount +
                 " rounds=" + session.Rounds + " credit=" + session.Credit);

@@ -33,12 +33,14 @@ public class UITriggerView : MonoBehaviour
     }
     private void Start()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
 
         AddAllEventTrigger();
     }
 
     private void InitView()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         var UICanvas = GameObject.Find("UICanvas").transform;
 
         cancelBtn = UICanvas.Find("Bottom/RightUp/CancelBtn").GetComponent<EventTrigger>();//取消压分 触发器
@@ -75,6 +77,7 @@ public class UITriggerView : MonoBehaviour
 
     public void ChangeTranslate()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         if (FSMSystem.Instance.CurrentStateID == StateID.Setting)//设置界面,设置状态中,不能使用该按钮来切换语言
         {
             //如果打开了设置界面,就不允许切换语言
@@ -93,6 +96,7 @@ public class UITriggerView : MonoBehaviour
 
     private void AddAllEventTrigger()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         //中文
         AddEventTrigger(zhongwenBtn, EventTriggerType.PointerEnter, (data) =>
         {

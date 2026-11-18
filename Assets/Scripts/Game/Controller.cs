@@ -24,10 +24,25 @@ public class Controller : BaseManager<Controller>
     {
         Utils.SetRandomSeed();
         Model.Instance.Init();
+        ApplyRouletteHostMode();
         AddEventListener();
         StartCheckBattleState();
         InputMgr.Instance.StartOrEndCheck(true);
 
+    }
+
+    /// <summary>
+    /// 轮盘模式下关闭原九门游戏的主机能力：
+    /// 1) 原游戏 BGM 全关（PlayMusic 统一失效，轮盘自己的音效不走这里）；
+    /// 2) 没有分机，不启动主机 WebSocket 服务端，所有 S2C 广播直接丢弃。
+    /// 设置/错误等非游戏状态与联网彩金客户端连接不受影响。
+    /// </summary>
+    private void ApplyRouletteHostMode()
+    {
+        AudioManager.BgmAllowed = !Model.Instance.rouletteFlow;
+        NetMgr.Instance.HostServerEnabled = !Model.Instance.rouletteFlow;
+        if (Model.Instance.rouletteFlow)
+            AudioManager.Instance.StopMusic();
     }
 
     /// <summary>
@@ -983,7 +998,13 @@ public class Controller : BaseManager<Controller>
         }
         HideTips();
         if (FSMSystem.Instance.CurrentStateID == StateID.Setting)
-            FSMSystem.Instance.PerformTransition(Transition.Print);
+        {
+            // 轮盘模式没有打单环节，退出设置直接重开押分窗口。
+            if (Model.Instance.rouletteFlow)
+                FSMSystem.Instance.ForceState(StateID.Prepare);
+            else
+                FSMSystem.Instance.PerformTransition(Transition.Print);
+        }
     }
 
     /// <summary>

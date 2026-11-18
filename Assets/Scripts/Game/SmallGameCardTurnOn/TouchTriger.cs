@@ -21,6 +21,7 @@ public class TouchTriger : MonoBehaviour
 
     private void PointerDown()
     {
+        if (Model.Instance.rouletteFlow && IsBetKey()) return;
         //if (isCheckLuckPlayer)
         //{
         //    Debug.Log("测试,isCheckLuckPlayer满足条件,会导致无法执行下一步");
@@ -58,6 +59,20 @@ public class TouchTriger : MonoBehaviour
     public void PointerUpPublic()
     {
         PointerUp();
+    }
+
+    // 轮盘模式下九门押分键不参与算法卡投注。
+    private bool IsBetKey()
+    {
+        return code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_A ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_B ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_C ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_D ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_E ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_F ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_G ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_H ||
+               code == SBOX_BATTLE_PLAYER_STATE_IN.STATE_IN_KEY_I;
     }
     private void LoopCheck()
     {

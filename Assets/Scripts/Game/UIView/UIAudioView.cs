@@ -28,6 +28,7 @@ public class UIAudioView : MonoBehaviour
 
     void Start()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         btnAudio.onClick.RemoveAllListeners();
         btnAudio.onClick.AddListener(OnClickAudio);
 
@@ -54,6 +55,7 @@ public class UIAudioView : MonoBehaviour
 
     private void InitView()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         // 音量设置UI
         var UICanvase = GameObject.Find("UICanvas").transform;
         btnAudioIcon = UICanvase.Find("Bottom/Left/AudioBtn/content2").GetComponent<Image>();
@@ -82,6 +84,7 @@ public class UIAudioView : MonoBehaviour
 
     void OnClickAudio()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         this.wndAudioSlider.SetActive(!this.wndAudioSlider.activeSelf);
         if (this.wndAudioSlider.activeSelf)
         {
@@ -92,6 +95,7 @@ public class UIAudioView : MonoBehaviour
     }
     void OnClickAudiMute()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         //this.wndAudioSlider.SetActive(!this.wndAudioSlider.activeSelf);
         sliderNumValue = this.sliderAudio.value;
         this.sliderAudio.value = 0;
@@ -105,6 +109,7 @@ public class UIAudioView : MonoBehaviour
     }
     void OnClickAudiMuteHide()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         this.sliderAudio.value = sliderNumValue;
         OnClickAudioSliderValueChange(this.sliderAudio.value);
         if (this.wndAudioSlider.activeSelf)
@@ -148,6 +153,7 @@ public class UIAudioView : MonoBehaviour
 
     void UpdateSliderAudio()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         this.sliderAudio.value = AudioManager.Instance.SoundVolumScale;
     }
 

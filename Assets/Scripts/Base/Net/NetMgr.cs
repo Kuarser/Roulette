@@ -13,6 +13,10 @@ public class NetMgr : MonoSingleton<NetMgr>
     ServerWS serverWS;
     ClientWS clientWS;
 
+    // 轮盘模式没有分机：主机服务端不启动，所有 S2C 广播直接丢弃。
+    // 默认为 true，保持原九门流程的双屏/分机行为。
+    public bool HostServerEnabled = true;
+
     //每条连接最后一次收到消息的时间，使用 realtimeSinceStartup 避免 timeScale/暂停影响存活判断
     private readonly Dictionary<WebSockets.ClientConnection, float> lastSeen
         = new Dictionary<WebSockets.ClientConnection, float>();
@@ -53,6 +57,8 @@ public class NetMgr : MonoSingleton<NetMgr>
     {
         if (Host)
         {
+            // 无分机时不启动主机服务端，避免监听端口与向分机广播。
+            if (!HostServerEnabled) return;
             if (serverWS == null)
                 serverWS = gameObject.AddComponent<ServerWS>();
             serverWS.StartServer(port, serverBroadcastPort);
@@ -65,21 +71,23 @@ public class NetMgr : MonoSingleton<NetMgr>
         }
     }
 
-    //�ͻ��˷������ݸ�������
+    //客户端发送数据给主机
     public void SendToServer(string strMsg)
     {
         clientWS?.SendToServer(strMsg);
     }
 
-    //�������������ݸ��ͻ���
+    //主机发送数据给客户端
     public void SendToClient(WebSockets.ClientConnection client,string strMsg)
     {
+        if (!HostServerEnabled) return;
         serverWS?.SendToClient(client, strMsg);
     }
 
-    //�����������пͻ��˷�����Ϣ
+    //主机向所有客户端发送消息
     public void SendToAllClient(string strMsg)
     {
+        if (!HostServerEnabled) return;
         serverWS?.SendToAllClient(strMsg);
     }
 

@@ -9,6 +9,7 @@ public class FirstStartState : FSMState
     public FirstStartState()
     {
         stateID = StateID.FirstStart;
+        AddTransition(Transition.Prepare, StateID.Prepare);
         AddTransition(Transition.Print, StateID.Print);
         AddTransition(Transition.Error, StateID.Error);
         AddTransition(Transition.EndRound, StateID.EndRound);
@@ -30,6 +31,12 @@ public class FirstStartState : FSMState
 
     public override void DoBeforeEntering()
     {
+        if (Model.Instance.rouletteFlow)
+        {
+            MonoMgr.Instance.StartCoroutine(DelayRoulettePrepare());
+            return;
+        }
+
         AddEventListener();
 
         SBoxIdea.BattleGameNumber();
@@ -37,7 +44,15 @@ public class FirstStartState : FSMState
 
     public override void DoBeforeLeaving()
     {
-        RemoveEventListener();
+        if (!Model.Instance.rouletteFlow) RemoveEventListener();
+    }
+
+    // 轮盘模式：不查询算法卡轮局，延迟一帧直接进入 Prepare 打开押分窗口。
+    private IEnumerator DelayRoulettePrepare()
+    {
+        yield return null;
+        if (FSMSystem.Instance.CurrentStateID != StateID.FirstStart) yield break;
+        FSMSystem.Instance.PerformTransition(Transition.Prepare);
     }
 
     private void ShowErrorStr(int activatedCode)

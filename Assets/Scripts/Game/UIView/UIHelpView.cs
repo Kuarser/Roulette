@@ -21,19 +21,23 @@ public class UIHelpView : MonoBehaviour
 
     private void InitView()
     {
-        var UICanvas = GameObject.Find("UICanvas").transform;
         var popCanvas = GameObject.Find("PopCanvas").transform;
         helpPanel = popCanvas.Find("helpPanel").gameObject;//帮助界面
-        helpBtn = UICanvas.Find("Bottom/Left/HelpBtn").GetComponent<Button>();
-        helpBtn.onClick.RemoveAllListeners();
-        helpBtn.onClick.AddListener(() =>
+        helpCloseBtn = helpPanel.transform.Find("closeBtn").GetComponent<Button>();
+        helpCloseBtn.onClick.RemoveAllListeners();
+        helpCloseBtn.onClick.AddListener(() =>
         {
             ChangeHelpPanelActive();
             AudioManager.Instance.PlaySoundEff("buttonClick");
         });
-        helpCloseBtn = helpPanel.transform.Find("closeBtn").GetComponent<Button>();
-        helpCloseBtn.onClick.RemoveAllListeners();
-        helpCloseBtn.onClick.AddListener(() =>
+
+        // 纯轮盘机台：帮助按钮在原九门界面底部，已随 UICanvas 子物体一起删除。
+        if (!View.OriginalBaccaratUiPresent) return;
+
+        var UICanvas = GameObject.Find("UICanvas").transform;
+        helpBtn = UICanvas.Find("Bottom/Left/HelpBtn").GetComponent<Button>();
+        helpBtn.onClick.RemoveAllListeners();
+        helpBtn.onClick.AddListener(() =>
         {
             ChangeHelpPanelActive();
             AudioManager.Instance.PlaySoundEff("buttonClick");

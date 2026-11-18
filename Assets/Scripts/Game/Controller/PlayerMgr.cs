@@ -188,6 +188,9 @@ using UnityEngine;
     /// <summary>仅在首次需要时启动5秒冲突巡检</summary>
     private void StartReconcileIfNeeded()
     {
+        // 轮盘模式没有分机，无需巡检分机连接冲突。
+        if (Model.Instance.rouletteFlow)
+            return;
         if (reconcileStarted)
             return;
         reconcileStarted = true;

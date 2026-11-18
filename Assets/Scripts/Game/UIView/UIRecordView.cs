@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+        using System;
+        using System.Collections.Generic;
+        using UnityEngine;
+        using UnityEngine.UI;
 
-public class UIRecordView : MonoBehaviour
-{
+        public class UIRecordView : MonoBehaviour
+        {
     private List<RecordView> recordViewList = new List<RecordView>();//本轮结果显示视图//100局结果显示视图//珠盘路
     private ScrollRect recordListZhuPanRect;
     private ScrollRect recordListRect;
@@ -20,6 +20,8 @@ public class UIRecordView : MonoBehaviour
 
     void InitView()
     {
+        // 纯轮盘机台：原九门路单控件已清除，全部方法直接短路。
+        if (!View.OriginalBaccaratUiPresent) return;
         var UICanvas = GameObject.Find("UICanvas").transform;
         var recordParent = UICanvas.Find("Top/Right/record2/ScrollView/Viewport/Content/RecordList");
         for (int i = 0; i < recordParent.childCount; i++)
@@ -33,6 +35,8 @@ public class UIRecordView : MonoBehaviour
 
     public void ShowRecordView(RecordStruct record, bool isShow = false)//100局结果显示视图
     {
+        if (!View.OriginalBaccaratUiPresent) return;
+
         var recordView = recordViewList[record.game - 1];
         recordView.SetRecordView(record);//赢分动画
         if (isShow)
@@ -41,11 +45,15 @@ public class UIRecordView : MonoBehaviour
 
     public void ShowSetRecordBySelfAddItem()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
+
         recordListView_SelfAddItem.SetRecords(Model.Instance.records);
     }
 
     public void ResetRecordView()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
+
         recordListView_SelfAddItem.ResetRecords();
 
         recordViewList.ForEach(view => view.HideRecordView());//隐藏格子中的icon//100局结果显示视图
@@ -53,6 +61,8 @@ public class UIRecordView : MonoBehaviour
 
     public void UpdateRecordView()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
+
         recordListView_SelfAddItem.SetRecords(Model.Instance.records);
         recordListRect.transform.GetComponent<ScrollSnapAlign>().RefreshPos(recordListView_SelfAddItem.LastCol);
         //int tempCol = Math.Ceiling(Model.Instance.curRecord.game/6.0)>5?(int)Math.Ceiling(Model.Instance.curRecord.game/6.0)-5:0;
@@ -61,12 +71,16 @@ public class UIRecordView : MonoBehaviour
 
     public void SetRecordView()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
+
         if (Model.Instance.records == null || Model.Instance.records.Count <= 0) return;
         recordListView_SelfAddItem.SetRecords(Model.Instance.records);
     }
 
     public void ShowZhuPanLu()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
+
         //珠盘路用 records 来 显示,不用 BeadPlateRoad ,因为有小游戏判断,钻石显示判断
         var records = Model.Instance.records;
         for (int i = 0; i < records.Count; i++)
@@ -78,7 +92,9 @@ public class UIRecordView : MonoBehaviour
 
     public void ShowDaLu()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
+
         //大路用 records 来 显示,不用 BigRoadList ,因为有小游戏判断,钻石显示判断
         recordListView_SelfAddItem.SetRecords(Model.Instance.records);
     }
-}
+        }

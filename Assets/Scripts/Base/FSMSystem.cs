@@ -23,6 +23,52 @@ public class FSMSystem : BaseManager<FSMSystem>
         state.DoBeforeEntering();//游戏开始入口
     }
 
+    /// <summary>
+    /// 强制重置到指定状态，不经过转移表校验。
+    /// 用于「当前状态没有目标转移，但业务要求立即切换」的场景，
+    /// 例如轮盘流程中任意空闲时刻进入后台设置。
+    /// </summary>
+    public void ForceState(StateID id)
+    {
+        if (id == StateID.NullStateID)
+        {
+            Debug.LogError("FSM ERROR: NullStateID is not allowed for a real state");
+            return;
+        }
+        if (currentStateID == id) return;
+
+        FSMState target = null;
+        foreach (FSMState state in states)
+        {
+            if (state.ID == id)
+            {
+                target = state;
+                break;
+            }
+        }
+        if (target == null)
+        {
+            Debug.LogError("FSM ERROR: Impossible to force state " + id.ToString() +
+                                            ". It was not on the list of states");
+            return;
+        }
+
+        StateID from = currentStateID;
+        if (currentState != null) currentState.DoBeforeLeaving();
+        currentState = target;
+        currentStateID = id;
+        target.DoBeforeEntering();
+
+        MsgInfo msgInfo = new MsgInfo()
+        {
+            cmd = (int)S2C_CMD.S2C_State,
+            id = -1,
+            jsonData = JsonConvert.SerializeObject(new CurrentStateID() { stateID = (int)currentStateID })
+        };
+        NetMgr.Instance.SendToAllClient(JsonConvert.SerializeObject(msgInfo));
+        Debug.Log($"FORCE STATE {from} To {currentStateID}");
+    }
+
     public void AddState(FSMState state)
     {
         if (state == null)

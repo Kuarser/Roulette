@@ -38,6 +38,10 @@ public class Model : BaseManager<Model>
     public int curRound;//当前轮数
     public int curGame;//当前局数
     public const int MAX_GAME = 66;//最大局数,常量
+    // 轮盘循环模式：true 时由轮盘流程驱动 FSM；false 时保持原九门流程。
+    // 默认开启；启动参数 -noRouletteFlow 回退到原九门流程，便于排查与对照。
+    public bool rouletteFlow = System.Array.IndexOf(
+        System.Environment.GetCommandLineArgs(), "-noRouletteFlow") < 0;
     //每局开始前的倒计时
     public int curCountDown;//当前倒计时
     /*****************卡牌数*****************/
@@ -313,7 +317,9 @@ public class Model : BaseManager<Model>
             EventCenter.Instance.EventTrigger(EventHandle.ACTIVE);
 
         // 防止快速拔插保单箱,不会重新开始新一轮,
-        if (errCode != 0
+        // 轮盘模式没有算法卡本轮协议，不自动补「结束本轮」错误码。
+        if (!rouletteFlow
+            && errCode != 0
             && errCode != 10
             && !errorCodeList.Contains(0)
             && FSMSystem.Instance.CurrentStateID != StateID.Setting

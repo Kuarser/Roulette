@@ -169,6 +169,11 @@ internal class SandboxController : BaseManager<SandboxController>
 
     private void OnHardwareKeyDown(ulong key)
     {
+        // 轮盘模式下 A~E 等投注键不再写入算法卡九门押分。
+        if (Model.Instance.rouletteFlow &&
+            (key == SBOX_SWITCH.SWITCH_A || key == SBOX_SWITCH.SWITCH_B ||
+             key == SBOX_SWITCH.SWITCH_C || key == SBOX_SWITCH.SWITCH_D ||
+             key == SBOX_SWITCH.SWITCH_E)) return;
         switch (key)
         {
             case SBOX_SWITCH.SWITCH_A:
@@ -380,6 +385,9 @@ internal class SandboxController : BaseManager<SandboxController>
         //结束本轮
         SBoxSandboxListener.Instance.AddButtonClick(SBOX_SWITCH.SWITCH_ROOT_SET, () =>
         {
+            // 轮盘模式不参与算法卡本轮协议：结算键写入的错误码 0（结束本轮）
+            // 会经 RemoveErrorCode -> ACTIVE 推进 FSM，必须屏蔽。
+            if (Model.Instance.rouletteFlow) return;
             if (Model.Instance.checking && IOCanvasModel.Instance.CfgData.PrintMode != 0)
             {
                 SBoxIdea.BattPrinterOpenBox(false, true);

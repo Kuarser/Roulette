@@ -24,8 +24,19 @@ public class UIHistoryView : MonoBehaviour
     private void InitView()
     {
         var popCanvas = GameObject.Find("PopCanvas").transform;
-        var UICanvas = GameObject.Find("UICanvas").transform;
         HistoryRecordPanel = popCanvas.Find("recordDialog3").gameObject;//历史记录界面
+        historyCloseBtn = HistoryRecordPanel.transform.Find("closeBtn").GetComponent<Button>();
+        historyCloseBtn.onClick.RemoveAllListeners();
+        historyCloseBtn.onClick.AddListener(() =>
+        {
+            ChangeHistoryRecordPanelActive();
+            AudioManager.Instance.PlaySoundEff("buttonClick");
+        });
+
+        // 纯轮盘机台：历史按钮在原九门界面底部，已随 UICanvas 子物体一起删除。
+        if (!View.OriginalBaccaratUiPresent) return;
+
+        var UICanvas = GameObject.Find("UICanvas").transform;
         historyBtn = UICanvas.Find("Bottom/Left/HistoryRecordBtn").GetComponent<Button>();
         historyBtn.onClick.RemoveAllListeners();
         historyBtn.onClick.AddListener(() =>
@@ -37,13 +48,6 @@ public class UIHistoryView : MonoBehaviour
                 return;
             }
             ChangeHistoryRecordPanelActive();
-        });
-        historyCloseBtn = HistoryRecordPanel.transform.Find("closeBtn").GetComponent<Button>();
-        historyCloseBtn.onClick.RemoveAllListeners();
-        historyCloseBtn.onClick.AddListener(() =>
-        {
-            ChangeHistoryRecordPanelActive();
-            AudioManager.Instance.PlaySoundEff("buttonClick");
         });
 
         ////给所有点击按钮添加点击音效

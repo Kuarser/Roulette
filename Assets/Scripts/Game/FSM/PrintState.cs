@@ -33,18 +33,33 @@ public class PrintState : FSMState
     public override void DoBeforeEntering()
     {
         Model.Instance.startingNewRound = true;
+
+        // 轮盘模式：本轮不打单，直接进入下一局 Prepare。
+        if (Model.Instance.rouletteFlow)
+        {
+            MonoMgr.Instance.StartCoroutine(DelayRoulettePrepare());
+            return;
+        }
+
         AddEventListener();
         OpenPrinterBox();
     }
 
     public override void DoBeforeLeaving()
     {
-        RemoveEventListener();
+        if (!Model.Instance.rouletteFlow) RemoveEventListener();
         Model.Instance.startingNewRound = false;
         Model.Instance.wait4Print = false;
         Model.Instance.haveClickPrint = false;
         Model.Instance.printerPrinting = false;
         Model.Instance.checking = false;
+    }
+
+    private IEnumerator DelayRoulettePrepare()
+    {
+        yield return null;
+        if (FSMSystem.Instance.CurrentStateID != StateID.Print) yield break;
+        FSMSystem.Instance.PerformTransition(Transition.Prepare);
     }
 
 

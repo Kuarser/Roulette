@@ -23,6 +23,9 @@ public class NetMessageController : BaseManager<NetMessageController>
         Messenger.AddListener<MsgInfo, ClientConnection>(MessageName.Event_ClientNetworkLogic, OnClientNetworkLogic);
         Messenger.AddListener<byte[]>(MessageName.Event_ClientNetworkRecv, OnClientNetworkRecv);
 
+        // 轮盘模式没有分机：不加载、也不重发分机打印回执订单。
+        if (Model.Instance.rouletteFlow) return;
+
         //开局加载未回执打印订单(PlayerPrefs无键枚举,按macId 2..MaxMacId逐个读;跳过#1本机,本机打印不纳入回执/重发)
         for (int macId = 2; macId <= SBoxModel.MaxMacId; macId++)
         {

@@ -66,6 +66,8 @@ public class UIMainView : MonoBehaviour
 
     private void AddEventListener()
     {
+        // 纯轮盘机台：没有原九门文本可切语言，跳过整段监听。
+        if (!View.OriginalBaccaratUiPresent) return;
         //多语言切换
         //Debug.LogError($"AddEventListener on {gameObject.name} id:{GetInstanceID()}");
         EventCenter.Instance.AddEventListener(EventHandle.CHANGE_LANGUAGE, () =>
@@ -110,6 +112,18 @@ public class UIMainView : MonoBehaviour
 
     private void InitView()
     {
+        // 纯轮盘机台：UICanvas 子物体已全部清除，只保留 PopCanvas 上的幸运座位提示。
+        if (!View.OriginalBaccaratUiPresent)
+        {
+            var popCanvasOnly = GameObject.Find("PopCanvas").transform;
+            if (popCanvasOnly != null)
+            {
+                var luckyTips2 = popCanvasOnly.Find("LuckyTips/Text");
+                if (luckyTips2 != null) luckyTipsText2 = luckyTips2.GetComponent<Text>();
+            }
+            return;
+        }
+
         var UICanvas = GameObject.Find("UICanvas").transform;
         countDownSpineAnimation = UICanvas.Find("Top/CountDown/shaoloudonghua").gameObject;
         shaoLouSkeleton = countDownSpineAnimation.GetComponent<SkeletonGraphic>();
@@ -168,6 +182,14 @@ public class UIMainView : MonoBehaviour
 
     private void SetView()//初始化设置
     {
+        // 纯轮盘机台：只有 PopCanvas 上的 luckyTipsText2 存在。
+        if (!View.OriginalBaccaratUiPresent)
+        {
+            if (luckyTipsText2 != null)
+                luckyTipsText2.text = Utils.GetLanguage("MistakeTips");
+            return;
+        }
+
         //UpdateView();
         ChangeCountDownState(CountDownState.None);
 
@@ -184,6 +206,7 @@ public class UIMainView : MonoBehaviour
 
     public void UpdateView()//更新部分数据
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         minBetText.text = IOCanvasModel.Instance.CfgData.MinBet.ToString();//最小押注
         limitText.text = IOCanvasModel.Instance.tempCfgData.LimitBetsWins.ToString();//限红
         winScoreText.text = PlayerMgr.Instance.localPlayer.outState.wins.ToString();//需要PlayerMgr已经初始化了
@@ -203,18 +226,21 @@ public class UIMainView : MonoBehaviour
 
     public void UpdateWinScoreText()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         winScoreText.text = PlayerMgr.Instance.localPlayer.outState.wins.ToString();
         Debug.LogError($"winScoreText:{PlayerMgr.Instance.localPlayer.outState.wins}");
     }
 
     public void UpdateCountDownText()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         countDownText3.text = Model.Instance.curCountDown.ToString();
         countDownText.text = Model.Instance.curCountDown.ToString();
     }
 
     public void UpdateRoundAndGameText()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         roundText.text = /*"R:" +*/ (Model.Instance.curRound).ToString();//轮数
         gameText.text = /*"C:" + */(Model.Instance.curGame).ToString();//局数
         roundText2.text = /*"R:" +*/ (Model.Instance.curRound).ToString();//轮数
@@ -223,11 +249,13 @@ public class UIMainView : MonoBehaviour
 
     public void UpdateJackpotText(int jackpot)
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         jackpotText.text = jackpot.ToString();
     }
 
     public void ChangeCountDownState(CountDownState countDownState)//更改倒计时状态
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         curCountDownState = countDownState;
 
         switch (curCountDownState)
@@ -313,6 +341,24 @@ public class UIMainView : MonoBehaviour
 
     public void SetLuckyTips(string str, float timer)
     {
+        // 纯轮盘机台：只剩 PopCanvas 上的 luckyTipsText2。
+        if (!View.OriginalBaccaratUiPresent)
+        {
+            if (luckyTipsText2 == null) return;
+            Color onlyColor = luckyTipsText2.color;
+            luckyTipsText2.text = str;
+            luckyTipsText2.color = Color.white;
+            StartCoroutine(DelayHideLuckyTips(timer, () =>
+            {
+                if (luckyTipsText2 != null)
+                {
+                    luckyTipsText2.text = Utils.GetLanguage("MistakeTips");
+                    luckyTipsText2.color = onlyColor;
+                }
+            }));
+            return;
+        }
+
         Color tempColor = luckyTipsText.color;
         luckyTipsText.text = str;
         luckyTipsText2.text = str;
@@ -335,11 +381,13 @@ public class UIMainView : MonoBehaviour
 
     public void SetWinScoreTextScale()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         winScoreText.transform.localScale = winScoreTextScale;
     }
 
     public void ShowWinScore()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         tempWinScoreOld = tempWinScore;//获取上一次的赢分
         tempWinScore = PlayerMgr.Instance.localPlayer.outState.wins;//获取本次赢分
 

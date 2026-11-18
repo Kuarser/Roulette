@@ -22,6 +22,9 @@ public class RewardState : FSMState
 
     public override void DoBeforeEntering()
     {
+        // 轮盘模式：开奖展示由轮盘自己完成，不播宿主九门开奖。
+        if (Model.Instance.rouletteFlow) return;
+
         OnReward();
 
     }

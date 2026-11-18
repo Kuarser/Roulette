@@ -48,12 +48,14 @@ public class UIBankerView : MonoBehaviour
 
     void Start()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         InitViewData();
         curSeatColor = seatTextList[0].color;//默认座位号颜色,满足条件的座位号显示默认颜色,不满足条件的座位号显示红色
     }
 
     private void InitView()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         var UICanvas = GameObject.Find("UICanvas").transform;
         //抢庄
         var bankerView = UICanvas.Find("Center/BankerView");
@@ -127,6 +129,7 @@ public class UIBankerView : MonoBehaviour
 
     private void InitViewData()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         EventCenter.Instance.AddEventListener(EventHandle.CHANGE_LANGUAGE, () =>
         {
             backerCutOddsText.text = Utils.GetLanguage("Taxes")+ " " + (Model.Instance.banckerData.WaterRateBasisPoints / 10) + "‰";//抽水费率直接用协议 WaterRateBasisPoints：200 = 2% = 20‰
@@ -166,6 +169,7 @@ public class UIBankerView : MonoBehaviour
     }
     public void UpdateBankerText()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         var bankerData = Model.Instance.banckerData;
         if (bankerData == null)
             return;
@@ -269,6 +273,7 @@ public class UIBankerView : MonoBehaviour
     }
     public void RefreshBancker()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         var bankerData = Model.Instance.banckerData;
         if (bankerData == null)
         {
@@ -302,6 +307,7 @@ public class UIBankerView : MonoBehaviour
 
     public void ResetBanker()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         //Debug.LogError("ResetBanker");
         for (int i = 0; i < roleWinTextList.Count; i++)//每种卡片类型的总赢分
         {
@@ -319,11 +325,13 @@ public class UIBankerView : MonoBehaviour
 
     public void ResetBanker2()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         qiangZhuangGreyImage.SetActive(true);//恢复抢庄按钮灰态,可以继续抢庄了
         AnimationEffect.SetActive(false);
     }
     public void setBidBankerBtngrey(bool isGrey)//将抢庄按钮的子物体置灰
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         var child = qiangZhuangGreyImage.GetComponentsInChildren<Image>(true);
         if(isGrey)
             foreach (var item in child)
@@ -340,6 +348,7 @@ public class UIBankerView : MonoBehaviour
     }
     public void SetTextSize()
     {
+        if (!View.OriginalBaccaratUiPresent) return;
         int textSize = IOCanvasModel.Instance.curlanguage == Language.en?13:17;
         foreach (var item in languageTextList)
         {

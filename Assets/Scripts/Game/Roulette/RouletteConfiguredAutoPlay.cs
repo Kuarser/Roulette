@@ -40,7 +40,10 @@ namespace RouletteDeluxe
         private bool ConfiguredAutoPlayEligible
         {
             get { return configuredAutoPlay.AutoPlay != 0 &&
-                (demoShowMode > 0 || !configuredAutoPlay.DemoOnly); }
+                (demoShowMode > 0 || !configuredAutoPlay.DemoOnly) &&
+                // 轮盘流程模式下由宿主 FSM 推进一局；这里只关闭自动转动，
+                // 仍保留 Idle 交接（idleEntry 收尾）以保证押分窗口可重开。
+                !Model.Instance.rouletteFlow; }
         }
 
         private bool DoubleUpInputAllowed

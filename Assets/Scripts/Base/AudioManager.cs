@@ -47,6 +47,10 @@ public class AudioManager : MonoBehaviour
         get { return voiceVolumScale; }
     }
 
+    // 原游戏背景音乐总开关。轮盘模式下由 Game 侧置为 false，
+    // 所有 PlayMusic 入口（每局开始/开奖/后台设置保存）统一失效。
+    public static bool BgmAllowed = true;
+
     private AudioSource musicAudio;     //背景音乐播放器
     private Dictionary<string, AudioClip> audioClipResDic = new Dictionary<string, AudioClip>();
     Transform thisTrans;
@@ -117,6 +121,7 @@ public class AudioManager : MonoBehaviour
     //播放背景音乐
     public void PlayMusic(string music)
     {
+        if (!BgmAllowed) return;
         if (IsPlayMusic(music))
             return;
         music = $"bgm/{music}";

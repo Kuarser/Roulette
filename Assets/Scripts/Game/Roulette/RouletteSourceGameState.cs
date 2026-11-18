@@ -60,6 +60,7 @@ namespace RouletteDeluxe
             // run before dispatching the next queued event, never inside the
             // first wager callback or after every additional wager.
             sourceTableInputEnabled = true;
+            RaiseFlowBetOpened();
             ApplyClearedGameResultsPresentation(false);
             SaveClearedGameResults();
             RestartSourcePrompt(PromptKind.PressSpin);

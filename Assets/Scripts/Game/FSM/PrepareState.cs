@@ -1,5 +1,6 @@
 
 
+using System.Collections;
 using Newtonsoft.Json;
 using SBoxApi;
 using UnityEngine;
@@ -38,13 +39,57 @@ public class PrepareState : FSMState
 
     public override void DoBeforeEntering()
     {
+        if (Model.Instance.rouletteFlow)
+        {
+            roulettePrepareActive = true;
+            MonoMgr.Instance.StartCoroutine(OpenRouletteBetting());
+            return;
+        }
+
         AddEventListener();
         SBoxIdea.BattleGameNumber();
     }
 
     public override void DoBeforeLeaving()
     {
-        RemoveEventListener();
+        // 离开 Prepare 必须停止轮盘押分轮询，否则协程会在转动期间继续
+        // 请求押分状态，把 gameplayState 改回 Bet 并清空输入队列。
+        roulettePrepareActive = false;
+        if (!Model.Instance.rouletteFlow) RemoveEventListener();
+    }
+
+    private bool roulettePrepareActive;
+
+    private IEnumerator OpenRouletteBetting()
+    {
+        yield return null;
+
+        // 轮盘模式仍然必须保留机台合规校验（运行时限/激活/爆机）。
+        int activeCode = SBoxIdea.NeedActivated();
+        if (!OnNeedActivated(activeCode))
+        {
+            FSMSystem.Instance.PerformTransition(Transition.Error);
+            yield break;
+        }
+
+        // 桥接缺失或信用为 0 时不能无限静默重试，但也不能进 Error 死等
+        // 算法卡的结束本轮事件（轮盘模式没有该事件）。超时后持续重试并报错。
+        // 注意：OpenBetting 返回 true 只表示请求已被接受，真正进入 Bet 由
+        // 轮盘的 ServiceSourceBetStateEntry 异步完成，因此要轮询到状态变化。
+        float deadline = Time.realtimeSinceStartup + 15f;
+        while (roulettePrepareActive &&
+               FSMSystem.Instance.CurrentStateID == StateID.Prepare)
+        {
+            // 设置请求由 RouletteGame.Update 每帧消费；这里不再处理。
+            if (RouletteFlowBridge.Instance != null)
+                RouletteFlowBridge.Instance.OpenBetting();
+            else if (Time.realtimeSinceStartup > deadline)
+            {
+                Debug.LogError("ROULETTE_FSM_FLOW: bridge missing, keep retrying");
+                deadline = Time.realtimeSinceStartup + 15f;
+            }
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     private void OnResetGame(double[] odds)
