@@ -4,8 +4,8 @@
         "cullingMask": 6,
         "screenHeight": 720,
 		"screenWidth": 1280,
-        "rawMaxX": 4095,
-        "rawMaxY": 4095
+        "rawMaxX": 16896,
+        "rawMaxY": 9216
     },
     {
         "display": 1,

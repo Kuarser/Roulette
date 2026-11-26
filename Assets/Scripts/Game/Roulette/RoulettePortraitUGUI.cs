@@ -445,6 +445,17 @@ namespace RouletteDeluxe
             // Its independent timeout can expire while App is suspended.
             // Pointer input remains queued for the resume purge instead.
             if (PcGameOrdinaryInputBlocked || uiGameInfoOptionsRoot == null) return;
+            // 轮盘画布在副屏，裸 Input 表示的是主屏指针；绑定模式下改用按屏按下点，
+            // 否则主屏任意点击都会关掉副屏这个菜单。
+            if (RouletteTouchFeed.Bound)
+            {
+                Vector2 boundPress;
+                if (RouletteTouchFeed.TryGetPress(out boundPress) &&
+                    !RectTransformUtility.RectangleContainsScreenPoint(
+                        uiGameInfoOptionsRoot, boundPress, null))
+                    CloseGameInfoOptions();
+                return;
+            }
             bool outsideMouse = Input.GetMouseButtonDown(0) &&
                 !RectTransformUtility.RectangleContainsScreenPoint(
                     uiGameInfoOptionsRoot, Input.mousePosition, null);
@@ -610,6 +621,9 @@ namespace RouletteDeluxe
                 }
                 sourceInputModule.Configure(this);
             }
+            // 屏幕绑定：轮盘画布只接受它所在屏的触摸事件。
+            // 该屏没有配置触摸设备时 Bound 为 false，输入退回全局 Input。
+            RouletteTouchFeed.Attach(sourceInputModule, portraitCanvas.targetDisplay);
             portraitRoot = UiRect(canvasObject.GetComponent<RectTransform>(),
                 new Rect(0, 0, 1080, 1920), "1080x1920 original screen");
             portraitRoot.anchorMin = portraitRoot.anchorMax = new Vector2(.5f, .5f);

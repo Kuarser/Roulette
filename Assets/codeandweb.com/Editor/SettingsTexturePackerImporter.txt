@@ -1,17 +1,8 @@
 version: 2
 tpsheetFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
-- Assets/Resources/Atlas/3_popcanvas_Atlas.tpsheet
-- Assets/TexturePackerResource/1_main.tpsheet
-- Assets/TexturePackerResource/3_popcanvas.tpsheet
 textureFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.png
-- Assets/Resources/Atlas/3_popcanvas_Atlas.png
-- Assets/TexturePackerResource/1_main.png
-- Assets/TexturePackerResource/3_popcanvas.png
 normalmapFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
-- 
-- 
-- 
 enableDebugOutput: 0

@@ -931,18 +931,28 @@ namespace RouletteDeluxe
                 RefreshPaytableTestUi();
                 return;
             }
-            if (rackSnapPointerNeedsRelease && !Input.GetMouseButton(0) &&
+            if (rackSnapPointerNeedsRelease &&
+                (RouletteTouchFeed.Bound ? !RouletteTouchFeed.AnyPointerCaptured :
+                    !Input.GetMouseButton(0)) &&
                 Time.frameCount > rackSnapFrame + 1)
                 rackSnapPointerNeedsRelease = false;
             bool rackInputSnappedThisFrame = false;
-            bool rackPointerDown = Input.GetMouseButtonDown(0);
+            // 轮盘画布在副屏，裸 Input 的鼠标坐标属于主屏。绑定模式下只有副屏的
+            // 按下才算作 rack 输入，避免主屏同位置点击触发副屏的赢分接管。
+            Vector2 boundPress = Vector2.zero;
+            bool boundRackPress = RouletteTouchFeed.Bound &&
+                RouletteTouchFeed.TryGetPress(out boundPress);
+            bool rackPointerDown = RouletteTouchFeed.Bound ? boundRackPress :
+                Input.GetMouseButtonDown(0);
             if (!UsesSourcePlayerInput && winRackActive && !topperPreview && !histogramPreview &&
                 !historyView &&
                 (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.D) ||
                  (rackPointerDown &&
                   (ideckPreview || portraitRoot == null ||
                    RectTransformUtility.RectangleContainsScreenPoint(
-                       portraitRoot, Input.mousePosition, null)))))
+                       portraitRoot,
+                       RouletteTouchFeed.Bound ? boundPress : (Vector2)Input.mousePosition,
+                       null)))))
                 rackInputSnappedThisFrame = TrySnapWinRackingInput(true,
                     rackPointerDown, Input.GetKeyDown(KeyCode.Space) ?
                         (Action)HandleSourceOfferPlay : Input.GetKeyDown(KeyCode.D) ?
@@ -1126,6 +1136,9 @@ namespace RouletteDeluxe
 
         private void OnDestroy()
         {
+            // 屏幕绑定是静态状态，实例销毁时必须复位，否则下一局会继续把事件
+            // 投递给已销毁的输入模块。
+            RouletteTouchFeed.Detach(sourceInputModule);
             // Object destruction is not CancelAutoComplete: retain native
             // saved seconds and process counters for the next game instance.
             pcAutoCompleteIpcTimer.Delete();

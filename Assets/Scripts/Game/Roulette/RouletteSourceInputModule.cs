@@ -55,6 +55,8 @@ namespace RouletteDeluxe
                 }
                 if (game != null && (game.PcAutoPlayStorageFaulted ||
                     !game.PcGameOrdinaryInputAllowedForModule)) return;
+                // 这条分支属于 PaytableTest / OperatorFallback 诊断模式，其指针
+                // 事件仍依赖 StandaloneInputModule 的全局采样，保持原行为。
                 base.Process();
                 return;
             }
@@ -72,7 +74,9 @@ namespace RouletteDeluxe
             game.ServiceSourcePlayerInput();
             if (game.PcAutoPlayStorageFaulted ||
                 !game.PcGameOrdinaryInputAllowedForModule) return;
-            if (lastPointer != null) ProcessMove(lastPointer);
+            // 绑定模式下指针由队列派发，lastPointer 可能残留绑定前的全局采样，
+            // 继续 ProcessMove 会让 hover 停在过期位置。
+            if (lastPointer != null && !RouletteTouchFeed.Bound) ProcessMove(lastPointer);
         }
 
         private void CaptureButton(KeyCode key)
@@ -86,6 +90,10 @@ namespace RouletteDeluxe
 
         private void CapturePointerEvents()
         {
+            // 屏幕绑定生效时，指针事件由 MyTouchComponent 按绑定关系投递
+            // （RouletteTouchFeed.Forward）。这里不再读全局 Input，否则另一块屏的
+            // 点击也会被当成轮盘画布的事件。
+            if (RouletteTouchFeed.Bound) return;
             if (input.touchCount > 0)
             {
                 for (int i = 0; i < input.touchCount; ++i)
@@ -121,6 +129,17 @@ namespace RouletteDeluxe
             pointer.button = PointerEventData.InputButton.Left;
             CapturePointerSample(pointer, pressed, released, held, touch, false);
             return pointer;
+        }
+
+        // 设备停止上报时不会有 Ended，按 PurgeInputs 的语义补一次"不派发点击"的
+        // 抬起，保证 pointerPress/pointerDrag 被清掉但不会误触下注。
+        internal void QueuePointerCancel(int pointerId)
+        {
+            if (game == null) return;
+            PointerEventData pointer;
+            GetPointerData(pointerId, out pointer, true);
+            game.SourcePlayerInputs.Enqueue(OriginalPlayerInputQueue.TouchRelease,
+                () => ReleasePurgedPointer(pointer, true));
         }
 
         private void CapturePointerSample(PointerEventData pointer, bool pressed,
@@ -196,6 +215,9 @@ namespace RouletteDeluxe
                 }
             }
             if (moved) ProcessDrag(pointer);
+            // 绑定模式下 lastPointer 不再由全局 Input 采样，hover 只能在队列派发时
+            // 补齐，与 StandaloneInputModule.ProcessTouchEvents 的 move 分支一致。
+            if (moved && RouletteTouchFeed.Bound) ProcessMove(pointer);
             if (touch && released && ReferenceEquals(
                 GetLastPointerEventData(pointer.pointerId), pointer))
                 RemovePointerData(pointer);

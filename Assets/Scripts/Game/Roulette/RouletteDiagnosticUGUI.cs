@@ -902,8 +902,10 @@ namespace RouletteDeluxe
         {
             if (ideckCanvas == null || topperCanvas == null) return;
             RefreshIDeckTouchAnimation(System.Diagnostics.Stopwatch.GetTimestamp());
-            ideckCanvas.enabled = PcGameScreensVisible && (ideckPreview || ideckSecondDisplay);
-            topperCanvas.enabled = PcGameScreensVisible && (topperPreview || histogramPreview || topperDedicatedDisplay);
+            // Original iDeck uGUI / Original topper uGUI 双端关闭：
+            // 编辑器与打包版本都不再点亮这两块画布，副屏仍由 portraitCanvas 承载。
+            ideckCanvas.enabled = false;
+            topperCanvas.enabled = false;
             if (ideckCanvas.enabled && session != null)
             {
                 // The original deck retains the selected Bet Per Unit button

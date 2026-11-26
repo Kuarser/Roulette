@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using static UsbTouchDataParser;
 
@@ -74,8 +76,6 @@ public class UsbTouchDataParser
             {
                 Debug.Log($"adaptation rawMax 数据异常: {adaptation.rawMax}");
             }
-
-
             Debug.LogError("Call ParseAllTouchData Return");
             return new Dictionary<int, TouchPoint>();
         }
@@ -89,33 +89,53 @@ public class UsbTouchDataParser
         // [9..10] Y（小端 u16）
         // 一直重复
 
-
         int curTouchPointCount = data.Length > 55 ? data[55] : 1;//不是55 的,可能用不到多点了,所以不用存一共有的触摸点个数
         int startIndex = 1;//data 触摸点 起始下标
         int interval = 5;//data 一个触摸点 数据间隔(长度:1字节 判断是否按下,4字节 存储坐标)
         int oneTouchIndex = 1;//一个触摸点 的累加
         Dictionary<int, TouchPoint> touchPointDic = new Dictionary<int, TouchPoint>();//所有触摸点
 
+        int[] values = Array.ConvertAll(data, value => (int)value);
 
-        if (data.Length == 52 && data[startIndex] == 0x01)//小屏幕
+        #region 旧款触摸控件
+        //if (data.Length == 52 && data[startIndex] == 0x01)//小屏幕
+        //{
+        //    if (data[51] < 1)
+        //    {
+        //        return touchPointDic;
+        //    }
+
+        //    TouchPoint touchPoint = new TouchPoint();
+        //    int id = data[1];
+        //    touchPoint.id = data[1];
+        //    touchPoint.isTouching = data[1] != 0;
+
+        //    int xRaw = (int)(data[3] | (data[4] << 8));
+        //    int y = (int)(data[5] | (data[6] << 8));
+        //    int x = xRaw & 0x7FFF;
+        //    touchPoint.pos = ToUnityPosition(new Vector2(x, y), adaptation, invertX, invertY);
+        //    touchPointDic[id] = touchPoint;
+        //    return touchPointDic;
+        //}
+        #endregion
+
+        if (data.Length == 54 && (data[1] == 0x10 || data[1] == 0x11))//小屏幕
         {
-            if (data[51] < 1)
+            if (data[1] == 0x10 || data[53] < 1)
             {
-                //Debug.Log("小屏触摸结束");
+                //0x10 表示抬起，返回空字典以通知本地触摸点结束
                 return touchPointDic;
             }
 
             TouchPoint touchPoint = new TouchPoint();
-            int id = data[1];
-            touchPoint.id = data[1];
-            touchPoint.isTouching = data[1] != 0;
+            int id = 1;
+            touchPoint.id = id;
+            touchPoint.isTouching = true;
 
-            int xRaw = (int)(data[3] | (data[4] << 8));
-            int y = (int)(data[5] | (data[6] << 8));
-            int x = xRaw & 0x7FFF;
-            touchPoint.pos = ToUnityPosition(new Vector2(x, y), adaptation, invertX, invertY);
+            int rawX = data[2] | (data[3] << 8);
+            int rawY = (data[4] | (data[5] << 8));
+            touchPoint.pos = ToUnityPosition(new Vector2(rawX, rawY), adaptation, invertX, invertY);
             touchPointDic[id] = touchPoint;
-            //Debug.Log($"touchPoint.id = {touchPoint.id},touchPoint.pos = {touchPoint.pos}");
             return touchPointDic;
         }
 

@@ -30,6 +30,13 @@ public class MyTouchComponent : MonoBehaviour
 
     private Coroutine setLastTouchPointCancelCoroutine;
 
+    // GUI提示：屏幕对应的usb设备, 下标对应屏幕序号(0/1), 每次绑定刷新覆盖
+    private readonly string[] guiScreenUsbHints = new string[2];
+    // GUI提示：绑定结果, 下标对应屏幕序号(0/1), 每次监听刷新覆盖
+    private readonly string[] guiBindResultHints = new string[2];
+    // GUI提示是否显示, 由按钮控制
+    private bool showGuiHints = true;
+
     private void Start()
     {
         ScreenModel.Instance.InitCamera();
@@ -137,6 +144,73 @@ public class MyTouchComponent : MonoBehaviour
         // 绘制主按钮 反向绑定usb和屏幕
         if (GUI.Button(new Rect(460, 10, 150, 50), "反向綁定usb和屏幕", buttonStyle))
             Bingding(true);
+        // 绘制主按钮 显示/隐藏GUI提示
+        if (GUI.Button(new Rect(610, 10, 150, 50), showGuiHints ? "隱藏提示" : "顯示提示", buttonStyle))
+            showGuiHints = !showGuiHints;
+
+        if (!showGuiHints) return;
+
+        // GUI提示区：按钮下方四块互不重合的区域, 各自刷新显示
+        GUIStyle hintStyle = new GUIStyle(GUI.skin.box)
+        {
+            alignment = TextAnchor.MiddleLeft,
+            wordWrap = true,
+            fontSize = 14
+        };
+        const float hintHeight = 34f;
+        const float hintSpace = 4f;
+        float hintWidth = Mathf.Max(0f, Screen.width - 20f);
+        // 前两块：两个屏幕当前对应的usb设备(绑定提示刷新覆盖, 无提示时读配置)
+        for (int i = 0; i < guiScreenUsbHints.Length; i++)
+        {
+            Rect hintRect = new Rect(10f, 70f + i * (hintHeight + hintSpace), hintWidth, hintHeight);
+            GUI.Box(hintRect, GetScreenUsbHint(i), hintStyle);
+        }
+        // 后两块：两个屏幕的绑定结果(每次监听刷新覆盖)
+        for (int i = 0; i < guiBindResultHints.Length; i++)
+        {
+            float y = 70f + (i + guiScreenUsbHints.Length) * (hintHeight + hintSpace);
+            Rect hintRect = new Rect(10f, y, hintWidth, hintHeight);
+            string result = string.IsNullOrEmpty(guiBindResultHints[i]) ? "暂无" : guiBindResultHints[i];
+            GUI.Box(hintRect, $"屏幕{i + 1}(Display{i}) 绑定结果：{result}", hintStyle);
+        }
+    }
+
+    /// <summary>
+    /// 屏幕对应的usb设备提示文本, 优先取绑定时的提示, 无提示时实时读取配置
+    /// </summary>
+    private string GetScreenUsbHint(int display)
+    {
+        string prefix = $"屏幕{display + 1}(Display{display}) 对应USB：";
+        if (display >= 0 && display < guiScreenUsbHints.Length && !string.IsNullOrEmpty(guiScreenUsbHints[display]))
+            return prefix + guiScreenUsbHints[display];
+        var adaptationList = ScreenModel.Instance.touchAdaptationList;
+        if (adaptationList == null) return prefix + "无配置";
+        for (int i = 0; i < adaptationList.Count; i++)
+        {
+            TouchAdaptation item = adaptationList[i];
+            if (item == null || item.display != display) continue;
+            return prefix + (string.IsNullOrEmpty(item.deviceId) ? "未绑定" : item.deviceId);
+        }
+        return prefix + "无配置";
+    }
+
+    /// <summary>
+    /// 记录指定屏幕对应的usb设备, 下标对应屏幕序号, 刷新覆盖上一条
+    /// </summary>
+    private void SetScreenUsbHint(int display, string deviceId)
+    {
+        if (display < 0 || display >= guiScreenUsbHints.Length) return;
+        guiScreenUsbHints[display] = deviceId;
+    }
+
+    /// <summary>
+    /// 记录指定屏幕的绑定结果, 下标对应屏幕序号, 刷新覆盖上一条
+    /// </summary>
+    private void SetBindResultHint(int display, string hint)
+    {
+        if (display < 0 || display >= guiBindResultHints.Length) return;
+        guiBindResultHints[display] = hint;
     }
 
     private void OnApplicationQuit()
@@ -241,7 +315,8 @@ public class MyTouchComponent : MonoBehaviour
             bool listenResult = StartListeningFormAdaptation(touchAdaptation, newDeviceId);
             if (!listenResult) return false;
 
-            Debug.Log($"关联屏幕：Display{touchAdaptation.display} - 触摸设备：{newDeviceId} 绑定成功");
+            Debug.Log($"关联屏幕：Display{touchAdaptation.display} - 触摸设备：{newDeviceId} 绑定成功");//GUI提示
+            SetScreenUsbHint(touchAdaptation.display, newDeviceId);
             return true;
         }
         catch (Exception e)
@@ -286,12 +361,14 @@ public class MyTouchComponent : MonoBehaviour
         var startListeningResult = StartListening(deviceId, adaptation.screenWidth, adaptation.screenHeight);
         if (!startListeningResult.success)
         {
-            Debug.LogError($"开启usb触摸监听失败: Display{adaptation.display} - 触摸设备：{adaptation.deviceId} - error：{startListeningResult.error}");
+            Debug.LogError($"开启usb触摸监听失败: Display{adaptation.display} - 触摸设备：{adaptation.deviceId} - error：{startListeningResult.error}");//GUI提示
+            SetBindResultHint(adaptation.display, $"失败 - error：{startListeningResult.error}");
             return false;
         }
         ScreenModel.Instance.listeningDic[deviceId] = adaptation;
         adaptation.deviceId = deviceId;
-        Debug.LogError($"开启usb触摸监听成功: Display{adaptation.display} - 触摸设备：{adaptation.deviceId}");
+        Debug.LogError($"开启usb触摸监听成功: Display{adaptation.display} - 触摸设备：{adaptation.deviceId}");//GUI提示
+        SetBindResultHint(adaptation.display, $"成功 - 触摸设备：{adaptation.deviceId}");
         return true;
     }
 
@@ -312,6 +389,8 @@ public class MyTouchComponent : MonoBehaviour
     }
 
     private int curDisplay = 0;
+    // 用户按过 RightAlt 后不再自动对齐，后续完全尊重手动选择。
+    private bool editorDisplayChosenByUser;
     Vector3 tempInputMousePos = Vector3.zero;
     private void InputMouse()
     {
@@ -322,8 +401,10 @@ public class MyTouchComponent : MonoBehaviour
             if (curDisplay >= ScreenModel.Instance.displayCameraDic.Count)
                 curDisplay = 0;
             curCamera = ScreenModel.Instance.displayCameraDic[curDisplay];//供编辑器鼠标模拟触摸点使用
+            editorDisplayChosenByUser = true;
             Debug.Log($"使用鼠标模拟触摸点,当前响应屏幕：Display{curDisplay + 1},事件响应摄像机：{curCamera}");
         }
+        TryAlignEditorMouseToRoulette();
         if (Input.GetMouseButtonDown(0))
         {
             //Debug.Log("鼠标点击 按下");
@@ -351,6 +432,23 @@ public class MyTouchComponent : MonoBehaviour
         }
     }
 
+    // 轮盘画布创建后，编辑器下的鼠标模拟默认路由到轮盘所在屏，
+    // 否则默认的 Display1 无法操作台面。
+    // 仅在纯轮盘机台（原九门 UICanvas 已清除）自动对齐，避免影响百家乐调试；
+    // 用户按过 RightAlt 后也不再覆盖。
+    private void TryAlignEditorMouseToRoulette()
+    {
+        if (editorDisplayChosenByUser) return;
+        if (View.OriginalBaccaratUiPresent) return;
+        int rouletteDisplay = RouletteDeluxe.RouletteTouchFeed.TargetDisplay;
+        if (rouletteDisplay <= 0 || rouletteDisplay == curDisplay) return;
+        if (ScreenModel.Instance.displayCameraDic == null ||
+            !ScreenModel.Instance.displayCameraDic.ContainsKey(rouletteDisplay)) return;
+        curDisplay = rouletteDisplay;
+        curCamera = ScreenModel.Instance.displayCameraDic[rouletteDisplay];
+        Debug.Log($"鼠标模拟触摸点已对齐轮盘屏：Display{curDisplay + 1}");
+    }
+
     private void InputMouseDriver(bool isDown, TouchPhase touchPhase, int display = 0)
     {
         //鼠标点击转为触摸信息，走触摸处理
@@ -370,6 +468,9 @@ public class MyTouchComponent : MonoBehaviour
 
         ScreenModel.Instance.displayCameraDic.TryGetValue(display, out Camera cameraEntity);
         InputDriverUGUI.Instance.SetInput(touchPoint, cameraEntity); //editor 鼠标模拟触摸点输入处理
+        // 轮盘画布是 Overlay + targetDisplay，原生 GraphicRaycaster 无法判定归属，
+        // 只把绑定到该屏的事件转给它，避免另一块屏的点击命中轮盘。
+        RouletteDeluxe.RouletteTouchFeed.Forward(touchPoint);
 
     }
     #endregion
@@ -465,11 +566,21 @@ public class MyTouchComponent : MonoBehaviour
     {
         yield return null;
         if (display == 0)
+        {
             foreach (var touchPoint in ScreenModel.Instance.display0TouchPointDic.Values)
+            {
                 touchPoint.phase = TouchPhase.Canceled;
+                RouletteDeluxe.RouletteTouchFeed.Forward(touchPoint);
+            }
+        }
         else
+        {
             foreach (var touchPoint in ScreenModel.Instance.display1TouchPointDic.Values)
+            {
                 touchPoint.phase = TouchPhase.Canceled;
+                RouletteDeluxe.RouletteTouchFeed.Forward(touchPoint);
+            }
+        }
         setLastTouchPointCancelCoroutine = null;
     }
 
@@ -499,6 +610,7 @@ public class MyTouchComponent : MonoBehaviour
                 || string.IsNullOrEmpty(touchPoint.deviceId)
                 || !touchPoint.deviceId.Equals(deviceId)) continue;
             InputDriverUGUI.Instance.SetInput(touchPoint, cameraEntity);//move事件持续触发
+            RouletteDeluxe.RouletteTouchFeed.Forward(touchPoint);
         }
 
         foreach (TouchPoint touchPoint in ScreenModel.Instance.display1TouchPointDic.Values)
@@ -507,6 +619,7 @@ public class MyTouchComponent : MonoBehaviour
                 || string.IsNullOrEmpty(touchPoint.deviceId)
                 || !touchPoint.deviceId.Equals(deviceId)) continue;
             InputDriverUGUI.Instance.SetInput(touchPoint, cameraEntity);//move事件持续触发
+            RouletteDeluxe.RouletteTouchFeed.Forward(touchPoint);
         }
     }
 
@@ -556,6 +669,7 @@ public class MyTouchComponent : MonoBehaviour
     {
         ScreenModel.Instance.displayCameraDic.TryGetValue(touchPoint.display, out Camera cameraEntity);
         InputDriverUGUI.Instance.SetInput(touchPoint, cameraEntity);//bengin 和 ended 事件触发
+        RouletteDeluxe.RouletteTouchFeed.Forward(touchPoint);
     }
 
     #region Android
