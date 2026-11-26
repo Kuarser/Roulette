@@ -828,6 +828,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Comparison<object>
 	// System.Comparison<uint>
 	// System.Comparison<ushort>
+	// System.Converter<byte,int>
 	// System.Converter<int,object>
 	// System.Converter<object,object>
 	// System.EventHandler<object>
@@ -1126,6 +1127,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object Newtonsoft.Json.JsonConvert.DeserializeObject<object>(string)
 		// object Newtonsoft.Json.JsonConvert.DeserializeObject<object>(string,Newtonsoft.Json.JsonSerializerSettings)
 		// object System.Activator.CreateInstance<object>()
+		// int[] System.Array.ConvertAll<byte,int>(byte[],System.Converter<byte,int>)
 		// byte[] System.Array.Empty<byte>()
 		// object[] System.Array.Empty<object>()
 		// uint[] System.Array.Empty<uint>()

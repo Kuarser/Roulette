@@ -42,7 +42,7 @@ public class Load : MonoBehaviour
             descText.text = "正在检测硬件...";
 
         // 初始化SBox硬件，连接指定IP
-        SBoxInit.Instance.Init("192.168.3.132", OnInitSBox);
+        SBoxInit.Instance.Init("192.168.3.191", OnInitSBox);
     }
 
     /// <summary>
