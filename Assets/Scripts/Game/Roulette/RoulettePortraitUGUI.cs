@@ -863,6 +863,14 @@ namespace RouletteDeluxe
             ScheduleIdlePromptAt(System.Diagnostics.Stopwatch.GetTimestamp(),
                 System.Diagnostics.Stopwatch.Frequency);
             RefreshPortraitUi();
+            //检查输出
+            Debug.Log($"ROULETTE_CANVAS_ROUTE: displays={Display.displays.Length} " +
+                $"target={portraitCanvas.targetDisplay} " +
+                $"screen={Screen.width}x{Screen.height} orientation={Screen.orientation}");
+            var sc = portraitCanvas.GetComponent<CanvasScaler>();
+            Debug.Log($"ROULETTE_SCALE: canvas={portraitRoot.rect.width}x{portraitRoot.rect.height} " +
+                $"scale={sc.scaleFactor:F3} match={sc.matchWidthOrHeight:F1} " +
+                $"d1={(Display.displays.Length > 1 ? Display.displays[1].renderingWidth + "x" + Display.displays[1].renderingHeight : "n/a")}");
         }
 
         private RectTransform uiColoredHistoryRoot;
