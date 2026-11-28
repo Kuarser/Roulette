@@ -70,6 +70,11 @@ namespace RouletteDeluxe
                 topperPreview || histogramPreview ? topperCanvas : portraitCanvas;
             if (source == null || !source.enabled)
                 throw new InvalidOperationException("Active roulette screen is not available for offscreen capture");
+            // 台面竖装旋转后，1080x1920 的输出帧只会截到中间一条竖带，
+            // 静默产出错图比报错更危险，这里直接失败。
+            if (!captureDeck && deckRotationDegrees != 0)
+                throw new InvalidOperationException(
+                    "Offscreen capture is not supported while the deck is rotated");
             int width = captureDeck ? 1280 : topperPreview || histogramPreview ? 1360 : 1080;
             int height = captureDeck ? 242 : topperPreview || histogramPreview ? 768 : 1920;
             string screen = captureDeck ? "iDeck" :
