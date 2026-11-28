@@ -126,6 +126,7 @@ namespace RouletteDeluxe
             resultVoiceSource = gameObject.AddComponent<AudioSource>();
             LoadPcPlayerVolume();
             LoadPcCashMeterMode();
+            LoadDeckRotationMode();
             LoadWinRacking();
             LoadOriginalScreen();
             if (originalLayout == null || originalLayout.wheel_ball == null)

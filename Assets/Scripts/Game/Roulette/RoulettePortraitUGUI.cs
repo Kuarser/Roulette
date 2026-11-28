@@ -216,6 +216,38 @@ namespace RouletteDeluxe
         private string pcCashMeterKey = DefaultPcCashMeterKey;
         private bool pcCashMeterMode;
         private bool pcCashMeterJurisdictionEnabled;
+        // 副屏物理竖装修正：台面绕 Z 旋转的角度。0 = 保持原布局。
+        // 先按 90 定稿验证；启动参数 -rouletteDeckRotation 仍可覆盖。
+        private const int DefaultDeckRotationDegrees = 90;
+        private int deckRotationDegrees = DefaultDeckRotationDegrees;
+
+        // 副屏是 1920x1080 的横屏面板，安装时物理转了 90°。
+        // 台面按 1080x1920 编排，因此需软件反向旋转才能正视。
+        // 只有 ±90 能让包围盒变成 1920x1080 并铺满；180 不改变包围盒，
+        // 在横屏面板上必然左右留白且上下被裁，仅作排查用，不可部署。
+        private void LoadDeckRotationMode()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            int index = Array.IndexOf(args, "-rouletteDeckRotation");
+            if (index < 0 || index + 1 >= args.Length) return;
+            int degrees;
+            if (!int.TryParse(args[index + 1], out degrees))
+            {
+                Debug.LogError("ROULETTE_DECK_ROTATION: 参数不是整数，保持默认 " +
+                    deckRotationDegrees);
+                return;
+            }
+            // 允许显式关闭，便于回归对比。
+            if (degrees != 0 && degrees != 90 && degrees != -90 && degrees != 180)
+            {
+                Debug.LogError("ROULETTE_DECK_ROTATION: 非法角度 " + degrees +
+                    "，保持默认 " + deckRotationDegrees);
+                return;
+            }
+            deckRotationDegrees = degrees;
+            if (degrees == 180)
+                Debug.LogWarning("ROULETTE_DECK_ROTATION: 180 不铺满，仅用于排查");
+        }
 
         private void LoadPcCashMeterMode()
         {
@@ -598,7 +630,8 @@ namespace RouletteDeluxe
             portraitCanvas.targetDisplay = 1;
             CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1080, 1920);
+            scaler.referenceResolution = deckRotationDegrees == 0
+                ? new Vector2(1080, 1920) : new Vector2(1920, 1080);
             scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
             scaler.matchWidthOrHeight = 1;
             if (FindObjectOfType<EventSystem>() == null)
@@ -629,6 +662,8 @@ namespace RouletteDeluxe
             portraitRoot.anchorMin = portraitRoot.anchorMax = new Vector2(.5f, .5f);
             portraitRoot.pivot = new Vector2(.5f, .5f);
             portraitRoot.anchoredPosition = Vector2.zero;
+            if (deckRotationDegrees != 0)
+                portraitRoot.localEulerAngles = new Vector3(0, 0, deckRotationDegrees);
             UiImage(portraitRoot, new Rect(0, 0, 1080, 1920), originalBackground, "Table background");
             uiWheel = UiImage(portraitRoot, originalLayout.wheel_main.ToRect(), wheel, "Wheel");
             Rect wheelBounds = originalLayout.wheel_main.ToRect();
@@ -863,6 +898,11 @@ namespace RouletteDeluxe
             ScheduleIdlePromptAt(System.Diagnostics.Stopwatch.GetTimestamp(),
                 System.Diagnostics.Stopwatch.Frequency);
             RefreshPortraitUi();
+            // CanvasScaler 由 typeof(CanvasScaler) 在构造时挂载，其 OnEnable 里的
+            // Handle() 早于下方对 referenceResolution 等字段的赋值执行，因此
+            // scaleFactor 会停留在按默认值算出的 1，直到下一帧 preWillRenderCanvases。
+            // 诊断需要真实值，这里提前推一次布局（幂等，本帧渲染前本来也会发生）。
+            Canvas.ForceUpdateCanvases();
             //检查输出
             Debug.Log($"ROULETTE_CANVAS_ROUTE: displays={Display.displays.Length} " +
                 $"target={portraitCanvas.targetDisplay} " +
@@ -871,6 +911,44 @@ namespace RouletteDeluxe
             Debug.Log($"ROULETTE_SCALE: canvas={portraitRoot.rect.width}x{portraitRoot.rect.height} " +
                 $"scale={sc.scaleFactor:F3} match={sc.matchWidthOrHeight:F1} " +
                 $"d1={(Display.displays.Length > 1 ? Display.displays[1].renderingWidth + "x" + Display.displays[1].renderingHeight : "n/a")}");
+            LogDeckDisplayDiagnostics(sc);
+        }
+
+        // 副屏竖装诊断。真实生效的是 Canvas.scaleFactor：
+        // CanvasScaler.scaleFactor 只回读序列化字段 m_ScaleFactor，SetScaleFactor 不会写它。
+        private void LogDeckDisplayDiagnostics(CanvasScaler scaler)
+        {
+            var canvasRect = portraitCanvas.GetComponent<RectTransform>().rect;
+            Debug.Log($"ROULETTE_DECK_DIAG: displays={Display.displays.Length} " +
+                $"target={portraitCanvas.targetDisplay} " +
+                $"canvas={canvasRect.width:F1}x{canvasRect.height:F1} " +
+                $"deck={portraitRoot.rect.width:F1}x{portraitRoot.rect.height:F1} " +
+                $"scalerScale={scaler.scaleFactor:F4} canvasScale={portraitCanvas.scaleFactor:F4} " +
+                $"match={scaler.matchWidthOrHeight:F2} " +
+                $"ref={scaler.referenceResolution.x}x{scaler.referenceResolution.y} " +
+                $"screen={Screen.width}x{Screen.height} orientation={Screen.orientation}");
+            // 世界角点包围盒 = 台面在该屏 surface 上实际占据的像素尺寸。
+            var corners = new Vector3[4];
+            portraitRoot.GetWorldCorners(corners);
+            float minX = corners[0].x, maxX = corners[0].x;
+            float minY = corners[0].y, maxY = corners[0].y;
+            for (int i = 1; i < 4; ++i)
+            {
+                minX = Mathf.Min(minX, corners[i].x); maxX = Mathf.Max(maxX, corners[i].x);
+                minY = Mathf.Min(minY, corners[i].y); maxY = Mathf.Max(maxY, corners[i].y);
+            }
+            Debug.Log($"ROULETTE_DECK_BOX: world={maxX - minX:F1}x{maxY - minY:F1} " +
+                $"rotateZ={deckRotationDegrees} " +
+                $"localZ={Mathf.DeltaAngle(0f, portraitRoot.localEulerAngles.z):F1} " +
+                $"lossyScale={portraitRoot.lossyScale.x:F4}");
+            for (int i = 0; i < Display.displays.Length; ++i)
+            {
+                Display display = Display.displays[i];
+                Debug.Log($"ROULETTE_DECK_DISPLAY[{i}]: " +
+                    $"rendering={display.renderingWidth}x{display.renderingHeight} " +
+                    $"system={display.systemWidth}x{display.systemHeight} " +
+                    $"active={display.active}");
+            }
         }
 
         private RectTransform uiColoredHistoryRoot;
@@ -1339,9 +1417,14 @@ namespace RouletteDeluxe
             // Roulette::CheckPlayButtonState only enables PLAY for a wager
             // that can be committed with the current balance and table cap.
             uiSpinButton.interactable = SourcePlayInputAllowed;
-            float wideScale = Screen.width / 1080f, tallScale = Screen.height / 1920f;
-            portraitCanvas.GetComponent<CanvasScaler>().matchWidthOrHeight =
-                wideScale < tallScale ? 0f : 1f;
+            // 旋转模式下按宽对齐由 CreatePortraitUi 一次设定；这里按主屏比例
+            // 每帧重算会把它冲掉。非旋转模式保持原有行为。
+            if (deckRotationDegrees == 0)
+            {
+                float wideScale = Screen.width / 1080f, tallScale = Screen.height / 1920f;
+                portraitCanvas.GetComponent<CanvasScaler>().matchWidthOrHeight =
+                    wideScale < tallScale ? 0f : 1f;
+            }
             bool inDouble = DoubleFeaturePresentationVisible;
             doubleRoot.gameObject.SetActive(inDouble);
             bool showingPays = paysPage >= 0 && !inDouble;
